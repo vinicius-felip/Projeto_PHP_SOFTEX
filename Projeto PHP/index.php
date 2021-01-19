@@ -1745,15 +1745,18 @@
                                                             <p class="item-value">
                                                                 R$ 4,99 </p>
                                                         </div>
-                                                        <div class="col-lg-3 col-5 align-self-center amount selectors" data-container="body">
+                                                        <div class="col-lg-4 col-2 align-self-center amount selectors" data-container="body">
                                                             <div class="input-group  ">
                                                                 <div class="input-group-prepend">
-                                                                    <button style="min-width: 2.5rem" class="btn btn-decrement btn-outline-secondary" type="button"><strong>-</strong>
+                                                                    <button style="min-width: 2.5rem" class="btn btn-decrement btn-outline-secondary" type="button" id="buttonAdd" onclick="descrescentar()"><strong>-</strong>
                                                                     </button>
                                                                 </div>
-                                                                <input type="text" inputmode="decimal" style="text-align: center" class="form-control " placeholder="">
+                                                                <a href="pagamentos.html">
+                                                                    <i class="fas fa-shopping-cart"></i>
+                                                                    <span class="badge badge-success" id="carrinhoIndex">?</span>
+                                                                </a>
                                                                 <div class="input-group-append">
-                                                                    <button style="min-width: 2.5rem" class="btn btn-increment btn-outline-secondary" type="button"><strong>+</strong>
+                                                                    <button style="min-width: 2.5rem" class="btn btn-increment btn-outline-secondary" type="button" id="buttonAdd" onclick="acrescentar()"><strong>+</strong>
                                                                     </button>
                                                                 </div>
                                                             </div>
@@ -1767,10 +1770,10 @@
                                                             <p class="item-value">
                                                                 R$ 4,99 </p>
                                                         </div>
-                                                        <div class="col-lg-4 col-4 align-self-center selectors">
+                                                        <div class="col-lg-4 col-2 align-self-center selectors">
                                                             <div class="input-group  ">
                                                                 <div class="input-group-prepend">
-                                                                    <button style="min-width: 2.5rem" class="btn btn-decrement btn-outline-secondary" id="buttonAdd" type="button" onclick="descrescentar()"><strong>-</strong></button>
+                                                                    <button style="min-width: 2.5rem" class="btn btn-decrement btn-outline-secondary"  type="button" id="buttonAdd" onclick="descrescentar()"><strong>-</strong></button>
                                                                 </div>
                                                                 <a href="pagamentos.html">
                                                                     <i class="fas fa-shopping-cart"></i>
@@ -1790,7 +1793,7 @@
                                                             <p class="item-value">
                                                                 R$ 4,99 </p>
                                                         </div>
-                                                        <div class="col-lg-4 col-4 align-self-center selectors">
+                                                        <div class="col-lg-4 col-2 align-self-center selectors">
                                                             <div class="input-group  ">
                                                                 <div class="input-group-prepend">
                                                                     <button style="min-width: 2.5rem" class="btn btn-decrement btn-outline-secondary" id="buttonAdd" type="button" onclick="descrescentar()"><strong>-</strong></button>
@@ -1813,11 +1816,14 @@
                                                             <p class="item-value">
                                                                 R$ 2,49 </p>
                                                         </div>
-                                                        <div class="col-lg-3 col-5 align-self-center amount selectors" data-container="body">
+                                                        <div class="col-lg-4 col-2 align-self-center amount selectors" data-container="body">
                                                             <input type=" value=" 0" name="7170_19090" min="0" step="1" style="opacity: 0; display: none;">
                                                             <div class="input-group  ">
-                                                                <div class="input-group-prepend"><button style="min-width: 2.5rem" class="btn btn-decrement btn-outline-secondary" type="button"><strong>-</strong></button></div><input type="text" inputmode="decimal" style="text-align: center" class="form-control " placeholder="">
-                                                                <div class="input-group-append"><button style="min-width: 2.5rem" class="btn btn-increment btn-outline-secondary" type="button"><strong>+</strong></button></div>
+                                                                <div class="input-group-prepend"><button style="min-width: 2.5rem" class="btn btn-decrement btn-outline-secondary" type="button" id="buttonAdd" onclick="acrescentar()"><strong>-</strong></button></div> <a href="pagamentos.html">
+                                                                    <i class="fas fa-shopping-cart"></i>
+                                                                    <span class="badge badge-success" id="carrinhoIndex">?</span>
+                                                                </a>
+                                                                <div class="input-group-app end">                                              <div class="input-group-append"><button style="min-width: 2.5rem" class="btn btn-increment btn-outline-secondary" type="button"><strong>+</strong></button></div>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -1829,10 +1835,14 @@
                                                             <p class="item-value">
                                                                 R$ 2,49 </p>
                                                         </div>
-                                                        <div class="col-lg-3 col-5 align-self-center amount selectors" data-container="body">
+                                                        <div class="col-lg-4 col-2 align-self-center amount selectors" data-container="body">
                                                             <input type=" value=" 0" name="7170_19091" min="0" step="1" style="opacity: 0; display: none;">
                                                             <div class="input-group  ">
-                                                                <div class="input-group-prepend"><button style="min-width: 2.5rem" class="btn btn-decrement btn-outline-secondary" type="button"><strong>-</strong></button></div><input type="text" inputmode="decimal" style="text-align: center" class="form-control " placeholder="">
+                                                                <div class="input-group-prepend"><button style="min-width: 2.5rem" class="btn btn-decrement btn-outline-secondary" type="button"><strong>-</strong></button></div><a href="pagamentos.html">
+                                                                    <i class="fas fa-shopping-cart"></i>
+                                                                    <span class="badge badge-success" id="carrinhoIndex">?</span>
+                                                                </a>
+                                                                <div class="input-group-app end">
                                                                 <div class="input-group-append"><button style="min-width: 2.5rem" class="btn btn-increment btn-outline-secondary" type="button"><strong>+</strong></button></div>
                                                             </div>
                                                         </div>
@@ -1845,11 +1855,13 @@
                                                             <p class="item-value">
                                                                 R$ 2,49 </p>
                                                         </div>
-                                                        <div class="col-lg-3 col-5 align-self-center amount selectors" data-container="body">
+                                                        <div class="col-lg-4 col-2 align-self-center amount selectors" data-container="body">
                                                             <input type=" value=" 0" name="7170_19092" min="0" step="1" style="opacity: 0; display: none;">
                                                             <div class="input-group  ">
-                                                                <div class="input-group-prepend"><button style="min-width: 2.5rem" class="btn btn-decrement btn-outline-secondary" type="button"><strong>-</strong></button></div><input type="text" inputmode="decimal" style="text-align: center" class="form-control " placeholder="">
-                                                                <div class="input-group-append"><button style="min-width: 2.5rem" class="btn btn-increment btn-outline-secondary" type="button"><strong>+</strong></button></div>
+                                                                <div class="input-group-prepend"><button style="min-width: 2.5rem" class="btn btn-decrement btn-outline-secondary" type="button"><strong>-</strong></button></div><a href="pagamentos.html">
+                                                                    <i class="fas fa-shopping-cart"></i>
+                                                                    <span class="badge badge-success" id="carrinhoIndex">?</span>
+                                                                </a>                         <div class="input-group-append"><button style="min-width: 2.5rem" class="btn btn-increment btn-outline-secondary" type="button"><strong>+</strong></button></div>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -1902,8 +1914,10 @@
                                                         <div class="col-lg-3 col-5 align-self-center amount selectors" data-container="body">
                                                             <input type=" value=" 0" name="7111_4517" min="0" step="1" style="opacity: 0; display: none;">
                                                             <div class="input-group  ">
-                                                                <div class="input-group-prepend"><button style="min-width: 2.5rem" class="btn btn-decrement btn-outline-secondary" type="button"><strong>-</strong></button></div><input type="text" inputmode="decimal" style="text-align: center" class="form-control " placeholder="">
-                                                                <div class="input-group-append"><button style="min-width: 2.5rem" class="btn btn-increment btn-outline-secondary" type="button"><strong>+</strong></button></div>
+                                                                <div class="input-group-prepend"><button style="min-width: 2.5rem" class="btn btn-decrement btn-outline-secondary" type="button"><strong>-</strong></button></div><a href="pagamentos.html">
+                                                                    <i class="fas fa-shopping-cart"></i>
+                                                                    <span class="badge badge-success" id="carrinhoIndex">?</span>
+                                                                </a>                         <div class="input-group-append"><button style="min-width: 2.5rem" class="btn btn-increment btn-outline-secondary" type="button"><strong>+</strong></button></div>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -1918,8 +1932,10 @@
                                                         <div class="col-lg-3 col-5 align-self-center amount selectors" data-container="body">
                                                             <input type=" value=" 0" name="7111_4518" min="0" step="1" style="opacity: 0; display: none;">
                                                             <div class="input-group  ">
-                                                                <div class="input-group-prepend"><button style="min-width: 2.5rem" class="btn btn-decrement btn-outline-secondary" type="button"><strong>-</strong></button></div><input type="text" inputmode="decimal" style="text-align: center" class="form-control " placeholder="">
-                                                                <div class="input-group-append"><button style="min-width: 2.5rem" class="btn btn-increment btn-outline-secondary" type="button"><strong>+</strong></button></div>
+                                                                <div class="input-group-prepend"><button style="min-width: 2.5rem" class="btn btn-decrement btn-outline-secondary" type="button"><strong>-</strong></button></div><a href="pagamentos.html">
+                                                                    <i class="fas fa-shopping-cart"></i>
+                                                                    <span class="badge badge-success" id="carrinhoIndex">?</span>
+                                                                </a>                              <div class="input-group-append"><button style="min-width: 2.5rem" class="btn btn-increment btn-outline-secondary" type="button"><strong>+</strong></button></div>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -1934,7 +1950,10 @@
                                                         <div class="col-lg-3 col-5 align-self-center amount selectors" data-container="body">
                                                             <input type=" value=" 0" name="7111_4519" min="0" step="1" style="opacity: 0; display: none;">
                                                             <div class="input-group  ">
-                                                                <div class="input-group-prepend"><button style="min-width: 2.5rem" class="btn btn-decrement btn-outline-secondary" type="button"><strong>-</strong></button></div><input type="text" inputmode="decimal" style="text-align: center" class="form-control " placeholder="">
+                                                                <div class="input-group-prepend"><button style="min-width: 2.5rem" class="btn btn-decrement btn-outline-secondary" type="button"><strong>-</strong></button></div><a href="pagamentos.html">
+                                                                    <i class="fas fa-shopping-cart"></i>
+                                                                    <span class="badge badge-success" id="carrinhoIndex">?</span>
+                                                                </a>   
                                                                 <div class="input-group-append"><button style="min-width: 2.5rem" class="btn btn-increment btn-outline-secondary" type="button"><strong>+</strong></button></div>
                                                             </div>
                                                         </div>
@@ -1988,7 +2007,10 @@
                                                         <div class="col-lg-3 col-5 align-self-center amount selectors" data-container="body">
                                                             <input type="number" value="0" name="7112_18108" min="0" step="1" style="opacity: 0; display: none;">
                                                             <div class="input-group  ">
-                                                                <div class="input-group-prepend"><button style="min-width: 2.5rem" class="btn btn-decrement btn-outline-secondary" type="button"><strong>-</strong></button></div><input type="text" inputmode="decimal" style="text-align: center" class="form-control " placeholder="">
+                                                                <div class="input-group-prepend"><button style="min-width: 2.5rem" class="btn btn-decrement btn-outline-secondary" type="button"><strong>-</strong></button></div><a href="pagamentos.html">
+                                                                    <i class="fas fa-shopping-cart"></i>
+                                                                    <span class="badge badge-success" id="carrinhoIndex">?</span>
+                                                                </a>   
                                                                 <div class="input-group-append"><button style="min-width: 2.5rem" class="btn btn-increment btn-outline-secondary" type="button"><strong>+</strong></button></div>
                                                             </div>
                                                         </div>
@@ -2002,9 +2024,12 @@
                                                                 R$ 7,90 </p>
                                                         </div>
                                                         <div class="col-lg-3 col-5 align-self-center amount selectors" data-container="body">
-                                                            <input type=" value=" 0" name="7112_18109" min="0" step="1" style="opacity: 0; display: none;">
+                                                            <input type=" value="0" name="7112_18109" min="0" step="1" style="opacity: 0; display: none;">
                                                             <div class="input-group  ">
-                                                                <div class="input-group-prepend"><button style="min-width: 2.5rem" class="btn btn-decrement btn-outline-secondary" type="button"><strong>-</strong></button></div><input type="text" inputmode="decimal" style="text-align: center" class="form-control " placeholder="">
+                                                                <div class="input-group-prepend"><button style="min-width: 2.5rem" class="btn btn-decrement btn-outline-secondary" type="button"><strong>-</strong></button></div><a href="pagamentos.html">
+                                                                    <i class="fas fa-shopping-cart"></i>
+                                                                    <span class="badge badge-success" id="carrinhoIndex">?</span>
+                                                                </a>   
                                                                 <div class="input-group-append"><button style="min-width: 2.5rem" class="btn btn-increment btn-outline-secondary" type="button"><strong>+</strong></button></div>
                                                             </div>
                                                         </div>
@@ -2058,7 +2083,11 @@
                                                         <div class="col-lg-3 col-5 align-self-center amount selectors" data-container="body">
                                                             <input type=" value=" 0" name="56656_4551" min="0" step="1" style="opacity: 0; display: none;">
                                                             <div class="input-group  ">
-                                                                <div class="input-group-prepend"><button style="min-width: 2.5rem" class="btn btn-decrement btn-outline-secondary" type="button"><strong>-</strong></button></div><input type="text" inputmode="decimal" style="text-align: center" class="form-control " placeholder="">
+                                                                <div class="input-group-prepend"><button style="min-width: 2.5rem" class="btn btn-decrement btn-outline-secondary" type="button"><strong>-</strong></button></div><a href="pagamentos.html">
+                                                                    <i class="fas fa-shopping-cart"></i>
+                                                                    <span class="badge badge-success" id="carrinhoIndex">?</span>
+                                                                </a>   
+              
                                                                 <div class="input-group-append"><button style="min-width: 2.5rem" class="btn btn-increment btn-outline-secondary" type="button"><strong>+</strong></button></div>
                                                             </div>
                                                         </div>
@@ -2074,7 +2103,11 @@
                                                         <div class="col-lg-3 col-5 align-self-center amount selectors" data-container="body">
                                                             <input type=" value=" 0" name="56656_4552" min="0" step="1" style="opacity: 0; display: none;">
                                                             <div class="input-group  ">
-                                                                <div class="input-group-prepend"><button style="min-width: 2.5rem" class="btn btn-decrement btn-outline-secondary" type="button"><strong>-</strong></button></div><input type="text" inputmode="decimal" style="text-align: center" class="form-control " placeholder="">
+                                                                <div class="input-group-prepend"><button style="min-width: 2.5rem" class="btn btn-decrement btn-outline-secondary" type="button"><strong>-</strong></button></div><a href="pagamentos.html">
+                                                                    <i class="fas fa-shopping-cart"></i>
+                                                                    <span class="badge badge-success" id="carrinhoIndex">?</span>
+                                                                </a>   
+              
                                                                 <div class="input-group-append"><button style="min-width: 2.5rem" class="btn btn-increment btn-outline-secondary" type="button"><strong>+</strong></button></div>
                                                             </div>
                                                         </div>
@@ -2110,7 +2143,11 @@
                                     <div class="col-lg-4 col-4 align-self-center selectors">
                                         <input type="number" value="0" name="7125" min="0" step="1" style="opacity: 0; display: none;">
                                         <div class="input-group  ">
-                                            <div class="input-group-prepend"><button style="min-width: 2.5rem" class="btn btn-decrement btn-outline-secondary" type="button"><strong>-</strong></button></div><input type="text" inputmode="decimal" style="text-align: center" class="form-control " placeholder="">
+                                            <div class="input-group-prepend"><button style="min-width: 2.5rem" class="btn btn-decrement btn-outline-secondary" type="button"><strong>-</strong></button></div><a href="pagamentos.html">
+                                                                    <i class="fas fa-shopping-cart"></i>
+                                                                    <span class="badge badge-success" id="carrinhoIndex">?</span>
+                                                                </a>   
+              
                                             <div class="input-group-append"><button style="min-width: 2.5rem" class="btn btn-increment btn-outline-secondary" type="button"><strong>+</strong></button></div>
                                         </div>
                                     </div>
