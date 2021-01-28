@@ -1,255 +1,110 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ptbr">
 
 <head>
-    <meta charset="utf-8">
-    <meta name="robots" content="noindex, nofollow">
-    <title>Login Feira PERNAMBUCANA</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-    <link rel="shortcut icon" href="https://3.bp.blogspot.com/-3cFs9oYoDcQ/XCVI5DxU91I/AAAAAAABdU0/thW8cHlp8N4AkKEUENl4t7TgtU7sX75IACLcBGAs/s320/pernambuco-alfabeto-f.png" type="image/x-icon">
-    <style type="text/css">
-        /* sign in FORM */
-        #logreg-forms {
-            width: 412px;
-            margin: 10vh auto;
-            background-color: #f3f3f3;
-            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
-            transition: all 0.3s cubic-bezier(.25, .8, .25, 1);
-        }
-
-        #logreg-forms form {
-            width: 100%;
-            max-width: 410px;
-            padding: 15px;
-            margin: auto;
-        }
-
-        #logreg-forms .form-control {
-            position: relative;
-            box-sizing: border-box;
-            height: auto;
-            padding: 10px;
-            font-size: 16px;
-        }
-
-        #logreg-forms .form-control:focus {
-            z-index: 2;
-        }
-
-        #logreg-forms .form-signin input[type="email"] {
-            margin-bottom: -1px;
-            border-bottom-right-radius: 0;
-            border-bottom-left-radius: 0;
-        }
-
-        #logreg-forms .form-signin input[type="password"] {
-            border-top-left-radius: 0;
-            border-top-right-radius: 0;
-        }
-
-        #logreg-forms .social-login {
-            width: 390px;
-            margin: 0 auto;
-            margin-bottom: 14px;
-        }
-
-        #logreg-forms .social-btn {
-            font-weight: 100;
-            color: white;
-            width: 190px;
-            font-size: 0.9rem;
-        }
-
-        #logreg-forms a {
-            display: block;
-            padding-top: 10px;
-            color: lightseagreen;
-        }
-
-        #logreg-form .lines {
-            width: 200px;
-            border: 1px solid red;
-        }
-
-
-        #logreg-forms button[type="submit"] {
-            margin-top: 10px;
-        }
-
-        #logreg-forms .facebook-btn {
-            background-color: #3C589C;
-        }
-
-        #logreg-forms .google-btn {
-            background-color: #DF4B3B;
-        }
-
-        #logreg-forms .form-reset,
-        #logreg-forms .form-signup {
-            display: none;
-        }
-
-        #logreg-forms .form-signup .social-btn {
-            width: 210px;
-        }
-
-        #logreg-forms .form-signup input {
-            margin-bottom: 2px;
-        }
-
-        .form-signup .social-login {
-            width: 210px !important;
-            margin: 0 auto;
-        }
-
-        /* Mobile */
-
-        @media screen and (max-width:500px) {
-            #logreg-forms {
-                width: 300px;
-            }
-
-            #logreg-forms .social-login {
-                width: 200px;
-                margin: 0 auto;
-                margin-bottom: 10px;
-            }
-
-            #logreg-forms .social-btn {
-                font-size: 1.3rem;
-                font-weight: 100;
-                color: white;
-                width: 200px;
-                height: 56px;
-
-            }
-
-            #logreg-forms .social-btn:nth-child(1) {
-                margin-bottom: 5px;
-            }
-
-            #logreg-forms .social-btn span {
-                display: none;
-            }
-
-            #logreg-forms .facebook-btn:after {
-                content: 'Facebook';
-            }
-
-            #logreg-forms .google-btn:after {
-                content: 'Google+';
-            }
-
-        }
-    </style>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-    <script type="text/javascript">
-        window.alert = function() {};
-        var defaultCSS = document.getElementById('bootstrap-css');
-
-        function changeCSS(css) {
-            if (css) $('head > link').filter(':first').replaceWith('<link rel="stylesheet" href="' + css + '" type="text/css" />');
-            else $('head > link').filter(':first').replaceWith(defaultCSS);
-        }
-        $(document).ready(function() {
-            var iframe_height = parseInt($('html').height());
-            window.parent.postMessage(iframe_height, 'https://bootsnipp.com');
-        });
-    </script>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="msapplication-TileColor" content="#da532c" />
+  <meta name="msapplication-config" content="img/favicon/browserconfig.xml" />
+  <meta name="theme-color" content="#ffffff" />
+  <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.css" />
+  <title>Feira PERNAMBUCANA</title>
+  <link rel="apple-touch-icon" sizes="180x180" href="img/favicon/apple-touch-icon.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="img/favicon/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="img/favicon/favicon-16x16.png" />
+  <link rel="manifest" href="img/favicon/site.webmanifest" />
+  <link rel="mask-icon" href="img/favicon/safari-pinned-tab.svg" color="#5bbad5" />
+  <link rel="shortcut icon" href="img/favicon/favicon.ico" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
 </head>
 
-<body>
-    <!DOCTYPE html>
-    <html lang="en">
-
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
-        <link rel="stylesheet" href="/style.css">
-        <title>Bootstrap 4 Login/Register Form</title>
-    </head>
-
-    <body>
-        <div id="logreg-forms">
-            <form class="form-signin">
-                <h1 class="h3 mb-3 font-weight-normal" style="text-align: center"> Sign in</h1>
-                <div class="social-login">
-                    <button class="btn facebook-btn social-btn" type="button"><span><i class="fab fa-facebook-f"></i> Entre com o Facebook</span> </button>
-                    <button class="btn google-btn social-btn" type="button"><span><i class="fab fa-google-plus-g"></i> Entre com o Google</span> </button>
-                </div>
-                <p style="text-align:center"> OU </p>
-                <input type="email" id="inputEmail" class="form-control" placeholder="Email" required="" autofocus="">
-                <input type="password" id="inputPassword" class="form-control" placeholder="Senha" required="">
-
-                <button class="btn btn-success btn-block" type="submit"><i class="fas fa-sign-in-alt"></i> Entrar</button>
-                <a href="#" id="forgot_pswd">Esqueceu a senha?</a>
-                <hr>
-                <!-- <p>Don't have an account!</p>  -->
-                <button class="btn btn-primary btn-block" type="button" id="btn-signup"><i class="fas fa-user-plus"></i> Cadastre-se</button>
-            </form>
-
-            <form action="/reset/password/" class="form-reset">
-                <input type="email" id="resetEmail" class="form-control" placeholder="Email" required="" autofocus="">
-                <button class="btn btn-primary btn-block" type="submit">Reset Password</button>
-                <a href="#" id="cancel_reset"><i class="fas fa-angle-left"></i> Back</a>
-            </form>
-
-            <form action="/signup/" class="form-signup">
-                <div class="social-login">
-                    <button class="btn facebook-btn social-btn" type="button"><span><i class="fab fa-facebook-f"></i> Cadastre-se com o Facebook</span> </button>
-                </div>
-                <div class="social-login">
-                    <button class="btn google-btn social-btn" type="button"><span><i class="fab fa-google-plus-g"></i> Cadastre-se com o Google</span> </button>
-                </div>
-
-                <p style="text-align:center">OU</p>
-
-                <input type="text" id="user-name" class="form-control" placeholder="Nome Commpleto" required="" autofocus="">
-                <input type="email" id="user-email" class="form-control" placeholder="Email" required autofocus="">
-                <input type="password" id="user-pass" class="form-control" placeholder="Senha" required autofocus="">
-                <input type="password" id="user-repeatpass" class="form-control" placeholder="Repita a senha" required autofocus="">
-
-                <button class="btn btn-primary btn-block" type="submit"><i class="fas fa-user-plus"></i> Cadastrar</button>
-                <a href="#" id="cancel_signup"><i class="fas fa-angle-left"></i> Voltar</a>
-            </form>
-            <br>
-
+<body style="min-width: 372px">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark border-bottom shadow-sm mb-3 sticky-top">
+    <div class="container">
+      <a class="navbar-brand" href="index.php"><img src="img/pernambuco-alfabeto-f.png" alt="FeiraPERNAMBUCANA" width="35px" style="margin-right: 8px" /><strong>Feira PERNAMBUCANA </strong></a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="navbar-collapse collapse">
+        <ul class="navbar-nav flex-grow-1">
+          <li class="nav-item">
+            <a href="index.php" class="nav-link text-white">Principal</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Lista de produtos
+            </a>
+            <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
+              <li><a class="dropdown-item" href="#">Frutas</a></li>
+              <li><a class="dropdown-item" href="#">Verduras/Legumes</a></li>
+              <li><a class="dropdown-item" href="#">Folhagens</a></li>
+              <li><a class="dropdown-item" href="#">Raízes/Tubérculos</a></li>
+            </ul>
+          </li>
+        </ul>
+        <div class="align-self-end">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a href="cadastro.php" class="nav-link text-white">Cadastrar</a>
+            </li>
+            <li class="nav-item">
+              <a href="login.php" class="nav-link text-white">Entrar</a>
+            </li>
+            <li class="nav-item">
+              <a href="carrinho.php" class="nav-link text-white">
+                <svg class="bi" width="24" height="24" fill="currentColor">
+                  <use xlink:href="bi.svg#cart3" />
+                </svg>
+              </a>
+            </li>
+          </ul>
         </div>
-        <p style="text-align:center">
-        <a href="/php/index.php" target="_self" style="color:black">Voltar</a>
-        </p>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-        <script src="/script.js"></script>
-    </body>
+      </div>
+    </div>
+  </nav>
 
-    </html>
-    <script type="text/javascript">
-        function toggleResetPswd(e) {
-            e.preventDefault();
-            $('#logreg-forms .form-signin').toggle() // display:block or none
-            $('#logreg-forms .form-reset').toggle() // display:block or none
-        }
+  <main class="mb-5 pb-5">
+    <div class="container">
+      <div class="row justify-content-center">
+        <form class="col-sm-12 col-md-8 col-lg-6">
+          <h1 class="mb-3">Identifique-se, por favor</h1>
+          <div class="form-floating mb-3">
+            <input type="email" class="form-control" autofocus id="txtEmail" placeholder=" " />
+            <label for="txtEmail">E-mail</label>
+          </div>
+          <div class="form-floating mb-3">
+            <input type="password" class="form-control" autofocus id="txtSenha" placeholder=" " />
+            <label for="txtSenha">Senha</label>
+          </div>
+          <div class="form-check mb-3">
+            <input type="checkbox" class="form-check-input" value="" id="chkLembrar">
+            <label for="chkLembrar" class="form-check-label">Lembrar de mim</label>
+          </div>
+          <button class="btn btn-lg btn-primary" type="button">Entrar</button>
+          <p class="mb-3 mt-3">Ainda não é cadastrado? <a href="cadastro.php">Clique aqui</a> para se cadastrar.</p>
+          <p class="mb-3">Esqueceu sua senha? <a href="recuperarsenha.php">Cliquei aqui</a> para recuperá-la.</p>
+        </form>
+      </div>
+    </div>
+  </main>
 
-        function toggleSignUp(e) {
-            e.preventDefault();
-            $('#logreg-forms .form-signin').toggle(); // display:block or none
-            $('#logreg-forms .form-signup').toggle(); // display:block or none
-        }
+  <footer class="boder-top fixed-bottom text-muted bg-light">
+    <div class="container">
+      <div class="row py-3">
+        <div class="col-12 col-md-4 text-center text-md-left">
+          &copy; 2020 - Feira PERNAMBUCANA
+        </div>
+        <div class="col-12 col-md-4 text-center text-md-left">
+          <a href="contato.php">Contato</a>
+        </div>
+        <div class="col-12 col-md-4 text-center text-md-left">
+          <a href="troca.php">Trocas e Devoluções</a>
+        </div>
+      </div>
+    </div>
+  </footer>
 
-        $(() => {
-            // Login Register Form
-            $('#logreg-forms #forgot_pswd').click(toggleResetPswd);
-            $('#logreg-forms #cancel_reset').click(toggleResetPswd);
-            $('#logreg-forms #btn-signup').click(toggleSignUp);
-            $('#logreg-forms #cancel_signup').click(toggleSignUp);
-        })
-    </script>
+  <script src="node_modules/bootstrap/dist/js/bootstrap.bundle.js"></script>
 </body>
 
 </html>
