@@ -66,13 +66,13 @@
   <main class="mb-5 pb-5">
     <div class="container">
       <div class="row justify-content-center">
-        <form class="col-sm-12 col-md-8 col-lg-6">
+        <form action="" method="POST" class="col-sm-12 col-md-8 col-lg-6">
           <h1 class="mb-3">Recuperação de Senha</h1>
           <div class="form-floating mb-3">
-            <input type="email" class="form-control" autofocus id="txtEmail" placeholder=" " />
+            <input name="recuperar" type="email" class="form-control" autofocus id="txtEmail" placeholder=" " />
             <label for="txtEmail">E-mail Cadastrado</label>
           </div>
-          <button class="btn btn-lg btn-primary" type="button">Recuperarar Senha</button>
+          <button type="submit" class="btn btn-lg btn-primary" type="button">Recuperar Senha</button>
           <p class="mb-3 mt-3">Ainda não é cadastrado? <a href="cadastro.php">Clique aqui</a> para se cadastrar.</p>
         </form>
       </div>

@@ -1,3 +1,11 @@
+<?php
+session_start();
+if (isset($_SESSION['email'])){
+    header('Location: index.php');
+    exit();
+}
+?>
+
 <!DOCTYPE html>
 <html lang="ptbr">
 
@@ -66,21 +74,21 @@
   <main class="mb-5 pb-5">
     <div class="container">
       <div class="row justify-content-center">
-        <form class="col-sm-12 col-md-8 col-lg-6">
-          <h1 class="mb-3">Identifique-se, por favor</h1>
+        <form action="logon.php" method="POST" class="col-sm-12 col-md-8 col-lg-6">
+          <h1 class="mb-3">Identifique-se, por favor</h1><?php if (isset($_SESSION['nao_autenticado'])){ ?><div class="alert alert-danger"><b>E-mail</b> ou <b>senha</b> incorreta.</div><?php } unset($_SESSION['nao_autenticado']);?>
           <div class="form-floating mb-3">
-            <input type="email" class="form-control" autofocus id="txtEmail" placeholder=" " />
+            <input name="email" type="email" class="form-control" autofocus id="txtEmail" placeholder=" " value="<?php if (isset($_SESSION['email_digitado'])){echo$_SESSION['email_digitado'];} unset($_SESSION['email_digitado']) ?>" />
             <label for="txtEmail">E-mail</label>
           </div>
           <div class="form-floating mb-3">
-            <input type="password" class="form-control" autofocus id="txtSenha" placeholder=" " />
+            <input name="senha" type="password" class="form-control" autofocus id="txtSenha" placeholder=" " />
             <label for="txtSenha">Senha</label>
           </div>
           <div class="form-check mb-3">
             <input type="checkbox" class="form-check-input" value="" id="chkLembrar">
             <label for="chkLembrar" class="form-check-label">Lembrar de mim</label>
           </div>
-          <button class="btn btn-lg btn-primary" type="button">Entrar</button>
+          <button type="submit" class="btn btn-lg btn-primary" type="button">Entrar</button>
           <p class="mb-3 mt-3">Ainda não é cadastrado? <a href="cadastro.php">Clique aqui</a> para se cadastrar.</p>
           <p class="mb-3">Esqueceu sua senha? <a href="recuperarsenha.php">Cliquei aqui</a> para recuperá-la.</p>
         </form>

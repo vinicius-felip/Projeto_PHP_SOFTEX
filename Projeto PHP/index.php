@@ -1,3 +1,5 @@
+<?php session_start();?>
+
 <!DOCTYPE html>
 <html lang="ptbr">
 
@@ -58,12 +60,21 @@
         </ul>
         <div class="align-self-end">
           <ul class="navbar-nav">
+          <?php if (isset($_SESSION['email'])){ ?>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false"><?php echo  $_SESSION['nome']; ?></a>
+              <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
+                <li><a class="dropdown-item" href="#">Meus Dados</a></li>
+                <li><a class="dropdown-item" href="#">Meus Pedidos</a></li>
+                <li><a class="dropdown-item text-dark bg-danger" href="logout.php">Sair</a></li>
+              </ul>
+            </li><?php } else {?>
             <li class="nav-item">
               <a href="cadastro.php" class="nav-link text-white">Cadastrar</a>
             </li>
             <li class="nav-item">
               <a href="login.php" class="nav-link text-white">Entrar</a>
-            </li>
+            </li><?php }?>
             <li class="nav-item">
               <a href="carrinho.php" class="nav-link text-white">
               <svg class="bi" width="24" height="24" fill="currentColor">
@@ -76,6 +87,7 @@
       </div>
     </div>
   </nav>
+  
   <header class="container">
     <div id="carouselMain" class="carousel carousel-light slide" data-bs-ride="carousel">
       <ol class="carousel-indicators">

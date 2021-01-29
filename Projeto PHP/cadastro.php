@@ -1,3 +1,11 @@
+<?php
+session_start();
+if (isset($_SESSION['email'])){
+    header('Location: index.php');
+    exit();
+}
+?>
+
 <!DOCTYPE html>
 <html lang="ptbr">
 
@@ -16,6 +24,7 @@
   <link rel="mask-icon" href="img/favicon/safari-pinned-tab.svg" color="#5bbad5" />
   <link rel="shortcut icon" href="img/favicon/favicon.ico" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+  <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 </head>
 
 <body style="min-width: 372px">
@@ -74,27 +83,27 @@
               <legend>Dados Pessoais</legend>
               <div class="mb-3">
                 <label for="txtNome" class="form-label">Nome</label>
-                <input type="text" class="form-control" id="txtNome" />
+                <input name="nome" type="text" class="form-control" id="txtNome" />
               </div>
               <div class="col-md-6 col-xl-5 mb-3">
                 <label for="txtCPF" CPF class="form-label">CPF</label>
                 <span class="form-text">(somente números)</span>
-                <input type="text" class="form-control" id="txtCPF" />
+                <input name="cpf" type="text" class="form-control" id="txtCPF" />
               </div>
               <div class="col-md-6 col-xl-4 mb-3">
                 <label for="txtDataNascimento" class="form-label">Data de Nascimento</label>
-                <input type="date" class="form-control" id="txtDataNascimento" />
+                <input name="datanascimento" type="date" class="form-control" id="txtDataNascimento" />
               </div>
             </fieldset>
             <fieldset>
               <legend>Contatos</legend>
               <div class="mb-3 col-md-8">
                 <label for="txtEmail" class="form-label">E-mail</label>
-                <input type="email" class="form-control" id="txtEmail" />
+                <input name="email" type="email" class="form-control" id="txtEmail" />
               </div>
               <div class="mb-3 col-md-8">
                 <label for="txtTelefone" class="form-label">Telefone</label>
-                <input type="tel" class="form-control" id="txtTelefone" placeholder="8140028922" />
+                <input name="telefone" type="tel" class="form-control" id="txtTelefone" placeholder="8140028922" />
                 <span class="form-text">(com DDD, somente números) </span>
               </div>
             </fieldset>
@@ -106,36 +115,36 @@
                 <label for="textCEP" class="form-label">CEP</label>
                 <span class="form-text">(somente números)</span>
                 <div class="input-group">
-                  <input type="text" class="form-control" id="textCEP">
+                  <input name="cep" type="text" class="form-control" id="textCEP" required>
                   <span class="input-group-text p-1"><i class="bi bi-hourglass-split" style="font-size: 20px;"></i>
                   </span>
                 </div>
               </div>
               <div class="mb-3 col-md-6 col-lg-8 align-self-end">
-                <textarea class="form-control text-muted bg-light" style="height: 68px;">Digite o CEP para buscarmos o endereço.</textarea>
+                <textarea name="endereco" id="endereco" class="form-control text-muted bg-light" style="height: 68px; resize: none;" disabled >Digite o CEP para buscarmos o endereço.</textarea>
               </div>
               <div class="mb-3 col-md-4">
                 <label for="txtNumero" class="form-label">Número</label>
-                <input type="text" class="form-control" id="txtNumero" />
+                <input name="numero" type="text" class="form-control" id="txtNumero" />
               </div>
               <div class="mb-3 col-md-8">
                 <label for="txtComplemento" class="form-label">Complemento</label>
-                <input type="text" class="form-control" id="txtComplemento" />
+                <input name="complemento" type="text" class="form-control" id="txtComplemento" />
               </div>
               <div class="mb-3">
                 <label for="txtReferencia" class="form-label">Referência</label>
-                <input type="text" class="form-control" id="txtReferencia" />
+                <input name="referencia" type="text" class="form-control" id="txtReferencia" />
               </div>
             </fieldset>
             <fieldset>
               <legend>Senha de Acesso</legend>
               <div class="mb-3">
                 <label for="txtSenha" class="form-label">Senha</label>
-                <input type="text" class="form-control" id="txtSenha" />
+                <input name="senha" type="text" class="form-control" id="txtSenha" />
               </div>
               <div class="mb-3">
                 <label for="txtConfSenha" class="form-label">Confirme a Senha</label>
-                <input type="text" class="form-control" id="txtConfSenha" />
+                <input name="confsenha" type="text" class="form-control" id="txtConfSenha" />
               </div>
             </fieldset>
           </div>
@@ -170,6 +179,31 @@
   </footer>
 
   <script src="node_modules/bootstrap/dist/js/bootstrap.bundle.js"></script>
+  <script type="text/javascript">
+		$("#textCEP").focusout(function(){
+			//Início do Comando AJAX
+			$.ajax({
+				//O campo URL diz o caminho de onde virá os dados
+				//É importante concatenar o valor digitado no CEP
+				url: 'https://viacep.com.br/ws/'+$(this).val()+'/json/unicode/',
+				//Aqui você deve preencher o tipo de dados que será lido,
+				//no caso, estamos lendo JSON.
+				dataType: 'json',
+				//SUCESS é referente a função que será executada caso
+				//ele consiga ler a fonte de dados com sucesso.
+				//O parâmetro dentro da função se refere ao nome da variável
+				//que você vai dar para ler esse objeto.
+				success: function(resposta){
+					//Agora basta definir os valores que você deseja preencher
+					//automaticamente nos campos acima.
+          $("#endereco").val(resposta.logradouro+', '+resposta.bairro+', '+resposta.localidade+' - '+resposta.uf);
+					//Vamos incluir para que o Número seja focado automaticamente
+					//melhorando a experiência do usuário
+					$("#txtNumero").focus();
+				}
+			});
+		});
+	</script>
 </body>
 
 </html>
