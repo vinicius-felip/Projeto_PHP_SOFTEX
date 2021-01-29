@@ -11,10 +11,10 @@ if (isset($_SESSION['email'])){
 
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="msapplication-TileColor" content="#da532c" />
-  <meta name="msapplication-config" content="img/favicon/browserconfig.xml" />
-  <meta name="theme-color" content="#ffffff" />
+  <meta name="cadviewport" content="width=device-width, initial-scale=1" />
+  <meta name="cadmsapplication-TileColor" content="#da532c" />
+  <meta name="cadmsapplication-config" content="img/favicon/browserconfig.xml" />
+  <meta name="cadtheme-color" content="#ffffff" />
   <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.css" />
   <title>Feira PERNAMBUCANA</title>
   <link rel="apple-touch-icon" sizes="180x180" href="img/favicon/apple-touch-icon.png" />
@@ -76,34 +76,40 @@ if (isset($_SESSION['email'])){
     <div class="container">
       <h1>Informe seus dados, por favor</h1>
       <hr />
-      <form>
+      <form action="cadastrar.php" method="POST">
         <div class="row">
           <div class="col-sm-12 col-md-6">
             <fieldset class="row">
               <legend>Dados Pessoais</legend>
               <div class="mb-3">
-                <label for="txtNome" class="form-label">Nome</label>
-                <input name="nome" type="text" class="form-control" id="txtNome" />
+                <label for="txtNome" class="form-label">Nome <span class="text-danger">*</span></label>
+                <input required name="cadnome" type="text" class="form-control" id="txtNome" value="<?php if (isset($_SESSION['senha_errada'])){echo$_SESSION['cadnome'];} unset($_SESSION['cadnome']) ?>" />
               </div>
               <div class="col-md-6 col-xl-5 mb-3">
-                <label for="txtCPF" CPF class="form-label">CPF</label>
+                <label for="txtCPF" CPF class="form-label">CPF <span class="text-danger">*</span></label>
                 <span class="form-text">(somente números)</span>
-                <input name="cpf" type="text" class="form-control" id="txtCPF" />
+                <?php if (isset($_SESSION['usuario_existe'])){?>
+                  <input type="text" class="form-control is-invalid" id="validationServer03" placeholder="" required>
+                   <div class="invalid-feedback">
+                    CPF já cadastrado.
+                  </div><?php } else { ?>
+                <input required name="cadcpf" type="text" class="form-control" id="txtCPF" value="<?php if (isset($_SESSION['senha_errada'])){echo$_SESSION['cadcpf'];} unset($_SESSION['cadcpf']) ?>" />
+                <?php } unset($_SESSION['usuario_existe']); ?>
               </div>
               <div class="col-md-6 col-xl-4 mb-3">
-                <label for="txtDataNascimento" class="form-label">Data de Nascimento</label>
-                <input name="datanascimento" type="date" class="form-control" id="txtDataNascimento" />
+                <label for="txtDataNascimento" class="form-label">Data de Nascimento <span class="text-danger">*</span></label>
+                <input required name="caddatanascimento" type="date" class="form-control" id="txtDataNascimento" max="<?php echo date('Y-m-d') ?>" value="<?php if (isset($_SESSION['senha_errada'])){echo$_SESSION['caddatanascimento'];} unset($_SESSION['caddatanascimento']) ?>" />
               </div>
             </fieldset>
             <fieldset>
               <legend>Contatos</legend>
               <div class="mb-3 col-md-8">
-                <label for="txtEmail" class="form-label">E-mail</label>
-                <input name="email" type="email" class="form-control" id="txtEmail" />
+                <label for="txtEmail" class="form-label">E-mail <span class="text-danger">*</span></label>
+                <input required name="cademail" type="email" class="form-control" id="txtEmail" placeholder="email@email.com" value="<?php if (isset($_SESSION['senha_errada'])){echo$_SESSION['cademail'];} unset($_SESSION['cademail']) ?>" />
               </div>
               <div class="mb-3 col-md-8">
-                <label for="txtTelefone" class="form-label">Telefone</label>
-                <input name="telefone" type="tel" class="form-control" id="txtTelefone" placeholder="8140028922" />
+                <label for="txtTelefone" class="form-label">Telefone <span class="text-danger">*</span></label>
+                <input required name="cadtelefone" type="tel" class="form-control" id="txtTelefone" placeholder="81940028922" value="<?php if (isset($_SESSION['senha_errada'])){echo$_SESSION['cadtelefone'];} unset($_SESSION['cadtelefone']) ?>" />
                 <span class="form-text">(com DDD, somente números) </span>
               </div>
             </fieldset>
@@ -112,39 +118,45 @@ if (isset($_SESSION['email'])){
             <fieldset class="row">
               <legend>Endereço</legend>
               <div class="mb-3 col-md-6 col-lg-4">
-                <label for="textCEP" class="form-label">CEP</label>
+                <label for="textCEP" class="form-label">CEP <span class="text-danger">*</span></label>
                 <span class="form-text">(somente números)</span>
                 <div class="input-group">
-                  <input name="cep" type="text" class="form-control" id="textCEP" required>
+                  <input required name="cadcep" type="text" class="form-control" id="textCEP">
                   <span class="input-group-text p-1"><i class="bi bi-hourglass-split" style="font-size: 20px;"></i>
                   </span>
                 </div>
               </div>
-              <div class="mb-3 col-md-6 col-lg-8 align-self-end">
-                <textarea name="endereco" id="endereco" class="form-control text-muted bg-light" style="height: 68px; resize: none;" disabled >Digite o CEP para buscarmos o endereço.</textarea>
+              <div class="mb-3 col-md-6 col-lg-8 align-self-end"> 
+                <textarea id="endereco" class="form-control text-muted bg-light" style="height: 68px; resize: none;" disabled >Digite o CEP para buscarmos o endereço.</textarea>
               </div>
               <div class="mb-3 col-md-4">
-                <label for="txtNumero" class="form-label">Número</label>
-                <input name="numero" type="text" class="form-control" id="txtNumero" />
+                <label for="txtNumero" class="form-label">Número <span class="text-danger">*</span></label>
+                <input required name="cadnumero" type="text" class="form-control" id="txtNumero" value="<?php if (isset($_SESSION['senha_errada'])){echo$_SESSION['cadnumero'];} unset($_SESSION['cadnumero']) ?>" />
               </div>
               <div class="mb-3 col-md-8">
                 <label for="txtComplemento" class="form-label">Complemento</label>
-                <input name="complemento" type="text" class="form-control" id="txtComplemento" />
+                <input name="cadcomplemento" type="text" class="form-control" id="txtComplemento" value="<?php if (isset($_SESSION['senha_errada'])){echo$_SESSION['cadcomplemento'];} unset($_SESSION['cadcomplemento']) ?>" />
               </div>
               <div class="mb-3">
                 <label for="txtReferencia" class="form-label">Referência</label>
-                <input name="referencia" type="text" class="form-control" id="txtReferencia" />
+                <input name="cadreferencia" type="text" class="form-control" id="txtReferencia" value="<?php if (isset($_SESSION['senha_errada'])){echo$_SESSION['cadreferencia'];} unset($_SESSION['cadreferencia']) ?>" />
               </div>
             </fieldset>
             <fieldset>
               <legend>Senha de Acesso</legend>
               <div class="mb-3">
-                <label for="txtSenha" class="form-label">Senha</label>
-                <input name="senha" type="text" class="form-control" id="txtSenha" />
+                <label for="txtSenha" class="form-label">Senha <span class="text-danger">*</span></label>
+                <input required name="cadsenha" type="text" class="form-control" id="txtSenha" />
               </div>
               <div class="mb-3">
-                <label for="txtConfSenha" class="form-label">Confirme a Senha</label>
-                <input name="confsenha" type="text" class="form-control" id="txtConfSenha" />
+                <label for="txtConfSenha" class="form-label">Confirme a Senha <span class="text-danger">*</span></label>
+                <?php if (isset($_SESSION['senha_errada'])){?>
+                  <input required name="cadconfsenha" type="text" class="form-control is-invalid" id="txtConfSenha" />
+                   <div class="invalid-feedback">
+                    Senhas não coincidem.
+                  </div><?php } else { ?>
+                <input required name="cadconfsenha" type="text" class="form-control" id="txtConfSenha" />
+                <?php } unset($_SESSION['senha_errada']); ?>
               </div>
             </fieldset>
           </div>
@@ -156,7 +168,7 @@ if (isset($_SESSION['email'])){
         </div>
         <div class="mb-3">
           <a class="btn btn-outline-danger" href="index.php">Cancelar</a>
-          <input type="button" value="Criar meu cadastro" class="btn btn-primary" onclick="window.location.href=''">
+          <input type="submit" value="Criar meu cadastro" class="btn btn-primary">
         </div>
       </form>
     </div>

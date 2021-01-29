@@ -1,4 +1,5 @@
-<?php session_start();?>
+<?php session_start();
+?>
 
 <!DOCTYPE html>
 <html lang="ptbr">
@@ -60,9 +61,9 @@
         </ul>
         <div class="align-self-end">
           <ul class="navbar-nav">
-          <?php if (isset($_SESSION['email'])){ ?>
+          <?php if (isset($_SESSION['nome'])){ ?>
             <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false"><?php echo  $_SESSION['nome']; ?></a>
+              <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false"><?php echo  strtok($_SESSION['nome'], " ")?></a>
               <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
                 <li><a class="dropdown-item" href="#">Meus Dados</a></li>
                 <li><a class="dropdown-item" href="#">Meus Pedidos</a></li>
