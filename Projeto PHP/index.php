@@ -1,8 +1,7 @@
-<?php 
+<?php
 session_start();
 include_once('config/conexao.php');
-$query = 'SELECT * FROM `produto`';
-$result = mysqli_query($conexao, $query);
+include_once('config/paginacao.php');
 ?>
 
 <!DOCTYPE html>
@@ -51,10 +50,10 @@ $result = mysqli_query($conexao, $query);
               Lista de produtos
             </a>
             <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
-              <li><a class="dropdown-item" href="#">Frutas</a></li>
-              <li><a class="dropdown-item" href="#">Verduras/Legumes</a></li>
-              <li><a class="dropdown-item" href="#">Folhagens</a></li>
-              <li><a class="dropdown-item" href="#">Raízes/Tubérculos</a></li>
+              <li><a href="index.php?categoria=verduras/legumes" class="dropdown-item" href="#">Verduras/Legumes</a></li>
+              <li><a href="index.php?categoria=frutas" class="dropdown-item" href="#">Frutas</a></li>
+              <li><a href="index.php?categoria=folhagens" class="dropdown-item" href="#">Folhagens</a></li>
+              <li><a href="index.php?categoria=raizes/tuberculos" class="dropdown-item" href="#">Raízes/Tubérculos</a></li>
             </ul>
           </li>
           <form class="d-flex ms-lg-5 col-5">
@@ -65,26 +64,26 @@ $result = mysqli_query($conexao, $query);
         </ul>
         <div class="align-self-end">
           <ul class="navbar-nav">
-          <?php if (isset($_SESSION['nome'])){ ?>
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false"><?php echo  strtok($_SESSION['nome'], " ")?></a>
-              <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
-                <li><a class="dropdown-item" href="#">Meus Dados</a></li>
-                <li><a class="dropdown-item" href="#">Meus Pedidos</a></li>
-                <li><a class="dropdown-item text-dark bg-danger" href="config/logout.php">Sair</a></li>
-              </ul>
-            </li><?php } else {?>
-            <li class="nav-item">
-              <a href="cadastrar.php" class="nav-link text-white">Cadastrar</a>
-            </li>
-            <li class="nav-item">
-              <a href="entrar.php" class="nav-link text-white">Entrar</a>
-            </li><?php }?>
+            <?php if (isset($_SESSION['nome'])) { ?>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false"><?php echo  strtok($_SESSION['nome'], " ") ?></a>
+                <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
+                  <li><a class="dropdown-item" href="#">Meus Dados</a></li>
+                  <li><a class="dropdown-item" href="#">Meus Pedidos</a></li>
+                  <li><a class="dropdown-item text-dark bg-danger" href="config/logout.php">Sair</a></li>
+                </ul>
+              </li><?php } else { ?>
+              <li class="nav-item">
+                <a href="cadastrar.php" class="nav-link text-white">Cadastrar</a>
+              </li>
+              <li class="nav-item">
+                <a href="entrar.php" class="nav-link text-white">Entrar</a>
+              </li><?php } ?>
             <li class="nav-item">
               <a href="carrinho.php" class="nav-link text-white">
-              <svg class="bi" width="24" height="24" fill="currentColor">
-                    <use xlink:href="bi.svg#cart3"></use>
-                  </svg>
+                <svg class="bi" width="24" height="24" fill="currentColor">
+                  <use xlink:href="bi.svg#cart3"></use>
+                </svg>
               </a>
             </li>
           </ul>
@@ -92,7 +91,7 @@ $result = mysqli_query($conexao, $query);
       </div>
     </div>
   </nav>
-  
+
   <header class="container">
     <div id="carouselMain" class="carousel carousel-light slide" data-bs-ride="carousel">
       <ol class="carousel-indicators">
@@ -128,29 +127,28 @@ $result = mysqli_query($conexao, $query);
       <div class="row">
         <div class="col-12">
           <div class="d-flex flex-row-reverse justify-content-center justify-content-md-start">
-            <form method="get" class="ml-3 d-inline-block">
-              <select class="form-select form-select-sm">
-                <option>Nome</option>
-                <option>Crescente</option>
-                <option>Decrescente</option>
-              </select>
-            </form>
             <nav class="d-inline-block">
               <ul class="pagination pagination-sm my-0">
                 <li class="page-item">
-                  <button class="page-link">1</button>
+                  <a class="page-link" href="index.php?<?php  if (isset($_GET['categoria'])){echo "categoria=";  echo $_GET['categoria']; echo "&";} ?>pagina=0" aria-label="Previous">
+                    <span aria-hidden="true">&laquo;</span>
+                  </a>
                 </li>
+                <?php for ($pagina = 0; $pagina < $num_paginas  ; $pagina++) { ?>
+                  <?php if ($pagina == intval($_GET['pagina'])) { ?>
+                    <li class="page-item active" aria-current="page">
+                      <span class="page-link"><?php echo $pagina + 1 ?></span>
+                    </li>
+                  <?php } else { ?>
+                    <li class="page-item">
+                      <a href="index.php?<?php  if (isset($_GET['categoria'])){echo "categoria=";  echo $_GET['categoria']; echo "&";} ?>pagina=<?php echo $pagina; ?>" class="page-link"><?php echo $pagina + 1 ?></a>
+                    </li>
+                <?php }
+                } ?>
                 <li class="page-item">
-                  <button class="page-link">2</button>
-                </li>
-                <li class="page-item">
-                  <button class="page-link">3</button>
-                </li>
-                <li class="page-item">
-                  <button class="page-link">4</button>
-                </li>
-                <li class="page-item">
-                  <button class="page-link">5</button>
+                  <a class="page-link" href="index.php?<?php  if (isset($_GET['categoria'])){echo "categoria=";  echo $_GET['categoria']; echo "&";} ?>pagina=<?php echo $num_paginas-1 ?>" aria-label="Next">
+                    <span aria-hidden="true">&raquo;</span>
+                  </a>
                 </li>
               </ul>
             </nav>
@@ -158,7 +156,7 @@ $result = mysqli_query($conexao, $query);
         </div>
       </div>
       <div class="row g-3 mt-3 mb-3">
-      <?php while ($dados = $result->fetch_assoc()){ ?>
+        <?php while ($dados = $result->fetch_assoc()) { ?>
           <div class="col-xl-2 col-lg-3 col-md-4 col-sm-6 d-flex align-items-stretch">
             <div class="card text-center bg-light">
               <img src="img/produtos/<?php echo $dados['produto_id'] ?>.jpg" class="card-img-top" />
@@ -166,7 +164,7 @@ $result = mysqli_query($conexao, $query);
               <div class="card-body">
                 <h5 class="card-title"><?php echo $dados['nome'] ?></h5>
                 <p class="max-3l card-text description">
-                <?php echo $dados['detalhe'] ?>
+                  <?php echo $dados['detalhe'] ?>
                 </p>
               </div>
               <div class="card-footer">
@@ -179,34 +177,33 @@ $result = mysqli_query($conexao, $query);
               </div>
             </div>
           </div>
-      <?php } ?>
+        <?php } ?>
       </div>
       <div class="row pb-4">
         <div class="col-12">
           <div class="d-flex flex-row-reverse justify-content-center justify-content-md-start">
-            <form class="ml-3 d-inline-block">
-              <select class="form-select form-select-sm">
-                <option>Nome</option>
-                <option>Crescente</option>
-                <option>Decrescente</option>
-              </select>
-            </form>
             <nav class="d-inline-block">
               <ul class="pagination pagination-sm my-0">
                 <li class="page-item">
-                  <button class="page-link">1</button>
+                  <a class="page-link" href="index.php?pagina=0" aria-label="Previous">
+                    <span aria-hidden="true">&laquo;</span>
+                  </a>
                 </li>
+                <?php for ($pagina = 0; $pagina < $num_paginas  ; $pagina++) { ?>
+                  <?php if ($pagina == intval($_GET['pagina'])) { ?>
+                    <li class="page-item active" aria-current="page">
+                      <span class="page-link"><?php echo $pagina + 1 ?></span>
+                    </li>
+                  <?php } else { ?>
+                    <li class="page-item">
+                      <a href="index.php?pagina=<?php echo $pagina ?>" class="page-link"><?php echo $pagina + 1 ?></a>
+                    </li>
+                <?php }
+                } ?>
                 <li class="page-item">
-                  <button class="page-link">2</button>
-                </li>
-                <li class="page-item">
-                  <button class="page-link">3</button>
-                </li>
-                <li class="page-item">
-                  <button class="page-link">4</button>
-                </li>
-                <li class="page-item">
-                  <button class="page-link">5</button>
+                  <a class="page-link" href="index.php?pagina=<?php echo $num_paginas-1 ?>" aria-label="Next">
+                    <span aria-hidden="true">&raquo;</span>
+                  </a>
                 </li>
               </ul>
             </nav>

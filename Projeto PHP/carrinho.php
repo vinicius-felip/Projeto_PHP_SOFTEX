@@ -72,7 +72,7 @@
           <div class="row g-3">
             <div class="col-4 col-md-3 col-lg-2">
               <a href="#">
-                <img src="img/produtos/000001.jpg" class="img-thumbnail">
+                <img src="img/produtos/1.jpg" class="img-thumbnail">
               </a>
             </div>
             <div class="col-8 col-md-9 col-lg-8 col-xl-8 text-left align-self-center">
