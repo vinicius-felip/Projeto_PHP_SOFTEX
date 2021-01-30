@@ -53,14 +53,14 @@ session_start();
               <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
                 <li><a class="dropdown-item" href="#">Meus Dados</a></li>
                 <li><a class="dropdown-item" href="#">Meus Pedidos</a></li>
-                <li><a class="dropdown-item text-light bg-danger" href="logout.php">Sair</a></li>
+                <li><a class="dropdown-item text-light bg-danger" href="config/logout.php">Sair</a></li>
               </ul>
             </li><?php } else {?>
             <li class="nav-item">
-              <a href="cadastro.php" class="nav-link text-white">Cadastrar</a>
+              <a href="cadastrar.php" class="nav-link text-white">Cadastrar</a>
             </li>
             <li class="nav-item">
-              <a href="login.php" class="nav-link text-white">Entrar</a>
+              <a href="entrar.php" class="nav-link text-white">Entrar</a>
             </li><?php }?>
             <li class="nav-item">
               <a href="carrinho.php" class="nav-link text-white">
@@ -77,7 +77,6 @@ session_start();
 
   <main class="mb-5 pb-5">
     <div class="container">
-
     </div>
   </main>
 

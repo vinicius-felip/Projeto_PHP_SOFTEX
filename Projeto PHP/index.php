@@ -1,4 +1,8 @@
-<?php session_start();
+<?php 
+session_start();
+include_once('config/conexao.php');
+$query = 'SELECT * FROM `produto`';
+$result = mysqli_query($conexao, $query);
 ?>
 
 <!DOCTYPE html>
@@ -67,14 +71,14 @@
               <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
                 <li><a class="dropdown-item" href="#">Meus Dados</a></li>
                 <li><a class="dropdown-item" href="#">Meus Pedidos</a></li>
-                <li><a class="dropdown-item text-dark bg-danger" href="logout.php">Sair</a></li>
+                <li><a class="dropdown-item text-dark bg-danger" href="config/logout.php">Sair</a></li>
               </ul>
             </li><?php } else {?>
             <li class="nav-item">
-              <a href="cadastro.php" class="nav-link text-white">Cadastrar</a>
+              <a href="cadastrar.php" class="nav-link text-white">Cadastrar</a>
             </li>
             <li class="nav-item">
-              <a href="login.php" class="nav-link text-white">Entrar</a>
+              <a href="entrar.php" class="nav-link text-white">Entrar</a>
             </li><?php }?>
             <li class="nav-item">
               <a href="carrinho.php" class="nav-link text-white">
@@ -124,7 +128,7 @@
       <div class="row">
         <div class="col-12">
           <div class="d-flex flex-row-reverse justify-content-center justify-content-md-start">
-            <form class="ml-3 d-inline-block">
+            <form method="get" class="ml-3 d-inline-block">
               <select class="form-select form-select-sm">
                 <option>Nome</option>
                 <option>Crescente</option>
@@ -154,246 +158,28 @@
         </div>
       </div>
       <div class="row g-3 mt-3 mb-3">
-        <div class="col-xl-2 col-lg-3 col-md-4 col-sm-6 d-flex align-items-stretch">
-          <div class="card text-center bg-light">
-            <img src="img/produtos/000001.jpg" class="card-img-top" />
-            <div class="card-header">R$ 2,49</div>
-            <div class="card-body">
-              <h5 class="card-title">Banana Prata</h5>
-              <p class="max-3l card-text description">
-                Uma palma contém 12-16 unidades.
-              </p>
-            </div>
-            <div class="card-footer">
-              <form class="d-block">
-                <button class="btn btn-outline-primary">
-                  Adicionar ao carrinhox
-                </button>
-              </form>
-              <small class="text-success">3003,kg em estoque</small>
-            </div>
-          </div>
-        </div>
-        <div class="col-xl-2 col-lg-3 col-md-4 col-sm-6 d-flex align-items-stretch">
-          <div class="card text-center bg-light">
-            <img src="img/produtos/000002.jpg" class="card-img-top" />
-            <div class="card-header">R$ 4,50</div>
-            <div class="card-body">
-              <h5 class="card-title">Banana Prata</h5>
-              <p class="max-3l card-text description">
-                Uma palma contém entre 12-16 unidades.
-              </p>
-            </div>
-            <div class="card-footer">
-              <form class="d-block">
-                <button class="btn btn-outline-primary">
-                  Adicionar ao carrinho
-                </button>
-              </form>
-              <small class="text-success">3003,kg em estoque</small>
+      <?php while ($dados = $result->fetch_assoc()){ ?>
+          <div class="col-xl-2 col-lg-3 col-md-4 col-sm-6 d-flex align-items-stretch">
+            <div class="card text-center bg-light">
+              <img src="img/produtos/<?php echo $dados['produto_id'] ?>.jpg" class="card-img-top" />
+              <div class="card-header">R$ <?php echo $dados['preco'] ?></div>
+              <div class="card-body">
+                <h5 class="card-title"><?php echo $dados['nome'] ?></h5>
+                <p class="max-3l card-text description">
+                <?php echo $dados['detalhe'] ?>
+                </p>
+              </div>
+              <div class="card-footer">
+                <form class="d-block">
+                  <button class="btn btn-outline-primary">
+                    Adicionar ao carrinhox
+                  </button>
+                </form>
+                <small class="text-success">3003,kg em estoque</small>
+              </div>
             </div>
           </div>
-        </div>
-        <div class="col-xl-2 col-lg-3 col-md-4 col-sm-6 d-flex align-items-stretch">
-          <div class="card text-center bg-light">
-            <img src="img/produtos/000003.jpg" class="card-img-top" />
-            <div class="card-header">R$ 4,50</div>
-            <div class="card-body">
-              <h5 class="card-title">Banana Prata</h5>
-              <p class="max-3l card-text description">
-                Uma palma contém entre 12-16 unidades.
-              </p>
-            </div>
-            <div class="card-footer">
-              <form class="d-block">
-                <button class="btn btn-outline-primary">
-                  Adicionar ao carrinho
-                </button>
-              </form>
-              <small class="text-success">3003,kg em estoque</small>
-            </div>
-          </div>
-        </div>
-        <div class="col-xl-2 col-lg-3 col-md-4 col-sm-6 d-flex align-items-stretch">
-          <div class="card text-center bg-light">
-            <img src="img/produtos/000004.jpg" class="card-img-top" />
-            <div class="card-header">R$ 4,50</div>
-            <div class="card-body">
-              <h5 class="card-title">Banana Prata</h5>
-              <p class="max-3l card-text description">
-                Uma palma contém entre 12-16 unidades.
-              </p>
-            </div>
-            <div class="card-footer">
-              <form class="d-block">
-                <button class="btn btn-outline-primary">
-                  Adicionar ao carrinho
-                </button>
-              </form>
-              <small class="text-success">3003,kg em estoque</small>
-            </div>
-          </div>
-        </div>
-        <div class="col-xl-2 col-lg-3 col-md-4 col-sm-6 d-flex align-items-stretch">
-          <div class="card text-center bg-light">
-            <img src="img/produtos/000005.jpg" class="card-img-top" />
-            <div class="card-header">R$ 4,50</div>
-            <div class="card-body">
-              <h5 class="card-title">Banana Prata</h5>
-              <p class="max-3l card-text description">
-                Uma palma contém entre 12-16 unidades.
-              </p>
-            </div>
-            <div class="card-footer">
-              <form class="d-block">
-                <button class="btn btn-outline-primary">
-                  Adicionar ao carrinho
-                </button>
-              </form>
-              <small class="text-success">3003,kg em estoque</small>
-            </div>
-          </div>
-        </div>
-        <div class="col-xl-2 col-lg-3 col-md-4 col-sm-6 d-flex align-items-stretch">
-          <div class="card text-center bg-light">
-            <img src="img/produtos/000006.jpg" class="card-img-top" />
-            <div class="card-header">R$ 4,50</div>
-            <div class="card-body">
-              <h5 class="card-title">Banana Prata</h5>
-              <p class="max-3l card-text description">
-                Uma palma contém entre 12-16 unidades.
-              </p>
-            </div>
-            <div class="card-footer">
-              <form class="d-block">
-                <button class="btn btn-outline-primary">
-                  Adicionar ao carrinho
-                </button>
-              </form>
-              <small class="text-success">3003,kg em estoque</small>
-            </div>
-          </div>
-        </div>
-        <div class="col-xl-2 col-lg-3 col-md-4 col-sm-6 d-flex align-items-stretch">
-          <div class="card text-center bg-light">
-            <img src="img/produtos/000007.jpg" class="card-img-top" />
-            <div class="card-header">R$ 4,50</div>
-            <div class="card-body">
-              <h5 class="card-title">Banana Prata</h5>
-              <p class="max-3l card-text description">
-                Uma palma contém entre 12-16 unidades.
-              </p>
-            </div>
-            <div class="card-footer">
-              <form class="d-block">
-                <button class="btn btn-outline-primary">
-                  Adicionar ao carrinho
-                </button>
-              </form>
-              <small class="text-success">3003,kg em estoque</small>
-            </div>
-          </div>
-        </div>
-        <div class="col-xl-2 col-lg-3 col-md-4 col-sm-6 d-flex align-items-stretch">
-          <div class="card text-center bg-light">
-            <img src="img/produtos/000008.jpg" class="card-img-top" />
-            <div class="card-header">R$ 4,50</div>
-            <div class="card-body">
-              <h5 class="card-title">Banana Prata</h5>
-              <p class="max-3l card-text description">
-                Uma palma contém entre 12-16 unidades.
-              </p>
-            </div>
-            <div class="card-footer">
-              <form class="d-block">
-                <button class="btn btn-outline-primary">
-                  Adicionar ao carrinho
-                </button>
-              </form>
-              <small class="text-success">3003,kg em estoque</small>
-            </div>
-          </div>
-        </div>
-        <div class="col-xl-2 col-lg-3 col-md-4 col-sm-6 d-flex align-items-stretch">
-          <div class="card text-center bg-light">
-            <img src="img/produtos/000009.jpg" class="card-img-top" />
-            <div class="card-header">R$ 4,50</div>
-            <div class="card-body">
-              <h5 class="card-title">Banana Prata</h5>
-              <p class="max-3l card-text description">
-                Uma palma contém entre 12-16 unidades.
-              </p>
-            </div>
-            <div class="card-footer">
-              <form class="d-block">
-                <button class="btn btn-outline-primary">
-                  Adicionar ao carrinho
-                </button>
-              </form>
-              <small class="text-success">3003,kg em estoque</small>
-            </div>
-          </div>
-        </div>
-        <div class="col-xl-2 col-lg-3 col-md-4 col-sm-6 d-flex align-items-stretch">
-          <div class="card text-center bg-light">
-            <img src="img/produtos/000010.jpg" class="card-img-top" />
-            <div class="card-header">R$ 4,50</div>
-            <div class="card-body">
-              <h5 class="card-title">Banana Prata</h5>
-              <p class="max-3l card-text description">
-                Uma palma contém entre 12-16 unidades.
-              </p>
-            </div>
-            <div class="card-footer">
-              <form class="d-block">
-                <button class="btn btn-outline-primary">
-                  Adicionar ao carrinho
-                </button>
-              </form>
-              <small class="text-success">3003,kg em estoque</small>
-            </div>
-          </div>
-        </div>
-        <div class="col-xl-2 col-lg-3 col-md-4 col-sm-6 d-flex align-items-stretch">
-          <div class="card text-center bg-light">
-            <img src="img/produtos/000011.jpg" class="card-img-top" />
-            <div class="card-header">R$ 4,50</div>
-            <div class="card-body">
-              <h5 class="card-title">Banana Prata</h5>
-              <p class="max-3l card-text description">
-                Uma palma contém entre 12-16 unidades.
-              </p>
-            </div>
-            <div class="card-footer">
-              <form class="d-block">
-                <button class="btn btn-outline-primary">
-                  Adicionar ao carrinho
-                </button>
-              </form>
-              <small class="text-success">3003,kg em estoque</small>
-            </div>
-          </div>
-        </div>
-        <div class="col-xl-2 col-lg-3 col-md-4 col-sm-6 d-flex align-items-stretch">
-          <div class="card text-center bg-light">
-            <img src="img/produtos/000012.jpg" class="card-img-top" />
-            <div class="card-header">R$ 4,50</div>
-            <div class="card-body">
-              <h5 class="card-title">Banana Prata</h5>
-              <p class="max-3l card-text description">
-                Uma palma contém entre 12-16 unidades.
-              </p>
-            </div>
-            <div class="card-footer">
-              <form class="d-block">
-                <button class="btn btn-outline-primary">
-                  Adicionar ao carrinho
-                </button>
-              </form>
-              <small class="text-success">3003,kg em estoque</small>
-            </div>
-          </div>
-        </div>
+      <?php } ?>
       </div>
       <div class="row pb-4">
         <div class="col-12">

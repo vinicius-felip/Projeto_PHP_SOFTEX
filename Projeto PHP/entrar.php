@@ -1,9 +1,6 @@
 <?php
 session_start();
-if (isset($_SESSION['email'])){
-    header('Location: index.php');
-    exit();
-}
+include_once('config/verificarlogout.php');
 ?>
 
 <!DOCTYPE html>
@@ -53,10 +50,10 @@ if (isset($_SESSION['email'])){
         <div class="align-self-end">
           <ul class="navbar-nav">
             <li class="nav-item">
-              <a href="cadastro.php" class="nav-link text-white">Cadastrar</a>
+              <a href="cadastrar.php" class="nav-link text-white">Cadastrar</a>
             </li>
             <li class="nav-item">
-              <a href="login.php" class="nav-link text-white">Entrar</a>
+              <a href="entrar.php" class="nav-link text-white">Entrar</a>
             </li>
             <li class="nav-item">
               <a href="carrinho.php" class="nav-link text-white">
@@ -74,7 +71,7 @@ if (isset($_SESSION['email'])){
   <main class="mb-5 pb-5">
     <div class="container">
       <div class="row justify-content-center">
-        <form action="logon.php" method="POST" class="col-sm-12 col-md-8 col-lg-6">
+        <form action="config/login.php" method="POST" class="col-sm-12 col-md-8 col-lg-6">
           <h1 class="mb-3">Identifique-se, por favor</h1><?php if (isset($_SESSION['nao_autenticado'])){ ?><div class="alert alert-danger"><b>E-mail</b> ou <b>senha</b> incorreta.</div><?php } unset($_SESSION['nao_autenticado']);?>
           <div class="form-floating mb-3">
             <input name="email" type="email" class="form-control" autofocus id="txtEmail" placeholder=" " value="<?php if (isset($_SESSION['email_digitado'])){echo$_SESSION['email_digitado'];} unset($_SESSION['email_digitado']) ?>" />
@@ -89,7 +86,7 @@ if (isset($_SESSION['email'])){
             <label for="chkLembrar" class="form-check-label">Lembrar de mim</label>
           </div>
           <button type="submit" class="btn btn-lg btn-primary" type="button">Entrar</button>
-          <p class="mb-3 mt-3">Ainda não é cadastrado? <a href="cadastro.php">Clique aqui</a> para se cadastrar.</p>
+          <p class="mb-3 mt-3">Ainda não é cadastrado? <a href="cadastrar.php">Clique aqui</a> para se cadastrar.</p>
           <p class="mb-3">Esqueceu sua senha? <a href="recuperarsenha.php">Cliquei aqui</a> para recuperá-la.</p>
         </form>
       </div>

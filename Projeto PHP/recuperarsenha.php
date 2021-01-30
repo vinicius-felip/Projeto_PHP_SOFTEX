@@ -45,10 +45,10 @@
         <div class="align-self-end">
           <ul class="navbar-nav">
             <li class="nav-item">
-              <a href="cadastro.php" class="nav-link text-white">Cadastrar</a>
+              <a href="cadastrar.php" class="nav-link text-white">Cadastrar</a>
             </li>
             <li class="nav-item">
-              <a href="login.php" class="nav-link text-white">Entrar</a>
+              <a href="entrar.php" class="nav-link text-white">Entrar</a>
             </li>
             <li class="nav-item">
               <a href="carrinho.php" class="nav-link text-white">
@@ -73,7 +73,7 @@
             <label for="txtEmail">E-mail Cadastrado</label>
           </div>
           <button type="submit" class="btn btn-lg btn-primary" type="button">Recuperar Senha</button>
-          <p class="mb-3 mt-3">Ainda não é cadastrado? <a href="cadastro.php">Clique aqui</a> para se cadastrar.</p>
+          <p class="mb-3 mt-3">Ainda não é cadastrado? <a href="cadastrar.php">Clique aqui</a> para se cadastrar.</p>
         </form>
       </div>
     </div>

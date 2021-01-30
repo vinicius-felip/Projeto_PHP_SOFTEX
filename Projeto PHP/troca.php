@@ -45,10 +45,10 @@
         <div class="align-self-end">
           <ul class="navbar-nav">
             <li class="nav-item">
-              <a href="cadastro.php" class="nav-link text-white">Cadastrar</a>
+              <a href="cadastrar.php" class="nav-link text-white">Cadastrar</a>
             </li>
             <li class="nav-item">
-              <a href="login.php" class="nav-link text-white">Entrar</a>
+              <a href="entrar.php" class="nav-link text-white">Entrar</a>
             </li>
             <li class="nav-item">
               <a href="carrinho.php" class="nav-link text-white">
