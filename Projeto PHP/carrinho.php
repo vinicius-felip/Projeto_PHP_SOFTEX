@@ -1,3 +1,8 @@
+<?php
+session_start();
+?>
+
+
 <!DOCTYPE html>
 <html lang="ptbr">
 
@@ -16,6 +21,24 @@
   <link rel="mask-icon" href="img/favicon/safari-pinned-tab.svg" color="#5bbad5" />
   <link rel="shortcut icon" href="img/favicon/favicon.ico" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+  <style>
+    html {
+    overflow-y: scroll;
+    }
+
+    :root {
+      overflow-y: auto;
+      overflow-x: hidden;
+    }
+
+    :root body {
+      position: absolute;
+    }
+
+    body {
+    width: 100vw;
+    }
+  </style>
 </head>
 
 <body style="min-width: 372px">
@@ -35,21 +58,30 @@
               Lista de produtos
             </a>
             <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
-              <li><a class="dropdown-item" href="#">Frutas</a></li>
-              <li><a class="dropdown-item" href="#">Verduras/Legumes</a></li>
-              <li><a class="dropdown-item" href="#">Folhagens</a></li>
-              <li><a class="dropdown-item" href="#">Raízes/Tubérculos</a></li>
+            <li><a href="index.php?categoria=verduras/legumes" class="dropdown-item" href="#">Verduras/Legumes</a></li>
+              <li><a href="index.php?categoria=frutas" class="dropdown-item" href="#">Frutas</a></li>
+              <li><a href="index.php?categoria=folhagens" class="dropdown-item" href="#">Folhagens</a></li>
+              <li><a href="index.php?categoria=raizes/tuberculos" class="dropdown-item" href="#">Raízes/Tubérculos</a></li>
             </ul>
           </li>
         </ul>
         <div class="align-self-end">
           <ul class="navbar-nav">
-            <li class="nav-item">
-              <a href="cadastrar.php" class="nav-link text-white">Cadastrar</a>
-            </li>
-            <li class="nav-item">
-              <a href="entrar.php" class="nav-link text-white">Entrar</a>
-            </li>
+          <?php if (isset($_SESSION['nome'])) { ?>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false"><?php echo  strtok($_SESSION['nome'], " ") ?></a>
+                <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
+                  <li><a class="dropdown-item" href="#">Meus Dados</a></li>
+                  <li><a class="dropdown-item" href="#">Meus Pedidos</a></li>
+                  <li><a class="dropdown-item text-dark bg-danger" href="config/logout.php">Sair</a></li>
+                </ul>
+              </li><?php } else { ?>
+              <li class="nav-item">
+                <a href="cadastrar.php" class="nav-link text-white">Cadastrar</a>
+              </li>
+              <li class="nav-item">
+                <a href="entrar.php" class="nav-link text-white">Entrar</a>
+              </li><?php } ?>
             <li class="nav-item">
               <a href="carrinho.php" class="nav-link text-white">
                 <svg class="bi" width="24" height="24" fill="currentColor">

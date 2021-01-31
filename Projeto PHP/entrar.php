@@ -21,6 +21,24 @@ include_once('config/verificarlogout.php');
   <link rel="mask-icon" href="img/favicon/safari-pinned-tab.svg" color="#5bbad5" />
   <link rel="shortcut icon" href="img/favicon/favicon.ico" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+  <style>
+    html {
+    overflow-y: scroll;
+    }
+
+    :root {
+      overflow-y: auto;
+      overflow-x: hidden;
+    }
+
+    :root body {
+      position: absolute;
+    }
+
+    body {
+    width: 100vw;
+    }
+  </style>
 </head>
 
 <body style="min-width: 372px">
@@ -40,10 +58,10 @@ include_once('config/verificarlogout.php');
               Lista de produtos
             </a>
             <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
-              <li><a class="dropdown-item" href="#">Frutas</a></li>
-              <li><a class="dropdown-item" href="#">Verduras/Legumes</a></li>
-              <li><a class="dropdown-item" href="#">Folhagens</a></li>
-              <li><a class="dropdown-item" href="#">Raízes/Tubérculos</a></li>
+            <li><a href="index.php?categoria=verduras/legumes" class="dropdown-item" href="#">Verduras/Legumes</a></li>
+              <li><a href="index.php?categoria=frutas" class="dropdown-item" href="#">Frutas</a></li>
+              <li><a href="index.php?categoria=folhagens" class="dropdown-item" href="#">Folhagens</a></li>
+              <li><a href="index.php?categoria=raizes/tuberculos" class="dropdown-item" href="#">Raízes/Tubérculos</a></li>
             </ul>
           </li>
         </ul>

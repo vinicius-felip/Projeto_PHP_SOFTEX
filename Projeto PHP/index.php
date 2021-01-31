@@ -9,7 +9,7 @@ include_once('config/paginacao.php');
 
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale = 1.0" />
   <meta name="msapplication-TileColor" content="#da532c" />
   <meta name="msapplication-config" content="img/favicon/browserconfig.xml" />
   <meta name="theme-color" content="#ffffff" />
@@ -23,6 +23,22 @@ include_once('config/paginacao.php');
   <link rel="shortcut icon" href="img/favicon/favicon.ico" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
   <style>
+    html {
+    overflow-y: scroll;
+    }
+
+    :root {
+      overflow-y: auto;
+      overflow-x: hidden;
+    }
+
+    :root body {
+      position: absolute;
+    }
+
+    body {
+    width: 100vw;
+    }
     p.max-3l {
       display: -webkit-box;
       -webkit-line-clamp: 3;
@@ -33,8 +49,8 @@ include_once('config/paginacao.php');
   </style>
 </head>
 
-<body style="min-width: 372px">
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark border-bottom shadow-sm mb-3 sticky-top">
+<body style="min-width: 372px ">
+  <nav class="navbar navbar-expand navbar-dark bg-dark border-bottom shadow-sm mb-3 sticky-top">
     <div class="container">
       <a class="navbar-brand" href="index.php"><img src="img/pernambuco-alfabeto-f.png" alt="FeiraPERNAMBUCANA" width="35px" style="margin-right: 8px" /><strong>Feira PERNAMBUCANA </strong></a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse">
@@ -56,9 +72,9 @@ include_once('config/paginacao.php');
               <li><a href="index.php?categoria=raizes/tuberculos" class="dropdown-item" href="#">Raízes/Tubérculos</a></li>
             </ul>
           </li>
-          <form class="d-flex ms-lg-5 col-5">
-            <input class="form-control me-2" type="search" placeholder="Buscar produto" aria-label="Search" />
-            <button class="btn btn-outline-primary" type="submit"><i class="bi-search"></i>
+          <form action="" method="get" class="d-flex ms-lg-5 col-5">
+            <input name="buscar" class="form-control me-2" type="search" placeholder="Buscar produto" aria-label="Search" />
+            <button type="submit" class="btn btn-outline-primary"><i class="bi-search"></i>
             </button>
           </form>
         </ul>
@@ -124,29 +140,60 @@ include_once('config/paginacao.php');
 
   <main class="mb-5 pb-3">
     <div class="container">
+              <?php if (isset($_GET['buscar'])) echo "<legend> Resultados para '$_GET[buscar]': </legend>" ?>
       <div class="row">
         <div class="col-12">
           <div class="d-flex flex-row-reverse justify-content-center justify-content-md-start">
             <nav class="d-inline-block">
               <ul class="pagination pagination-sm my-0">
                 <li class="page-item">
-                  <a class="page-link" href="index.php?<?php  if (isset($_GET['categoria'])){echo "categoria=";  echo $_GET['categoria']; echo "&";} ?>pagina=0" aria-label="Previous">
+                  <a class="page-link" href="index.php?<?php if (isset($_GET['buscar'])) {
+                                                          echo "buscar=";
+                                                          echo $_GET['buscar'];
+                                                          echo "&";
+                                                        } else {
+                                                          if (isset($_GET['categoria'])) {
+                                                            echo "categoria=";
+                                                            echo $_GET['categoria'];
+                                                            echo "&";
+                                                          }
+                                                        } ?>pagina=0" aria-label="Previous">
                     <span aria-hidden="true">&laquo;</span>
                   </a>
                 </li>
-                <?php for ($pagina = 0; $pagina < $num_paginas  ; $pagina++) { ?>
+                <?php for ($pagina = 0; $pagina < $num_paginas; $pagina++) { ?>
                   <?php if ($pagina == intval($_GET['pagina'])) { ?>
                     <li class="page-item active" aria-current="page">
                       <span class="page-link"><?php echo $pagina + 1 ?></span>
                     </li>
                   <?php } else { ?>
                     <li class="page-item">
-                      <a href="index.php?<?php  if (isset($_GET['categoria'])){echo "categoria=";  echo $_GET['categoria']; echo "&";} ?>pagina=<?php echo $pagina; ?>" class="page-link"><?php echo $pagina + 1 ?></a>
+                      <a href="index.php?<?php if (isset($_GET['buscar'])) {
+                                            echo "buscar=";
+                                            echo $_GET['buscar'];
+                                            echo "&";
+                                          } else {
+                                            if (isset($_GET['categoria'])) {
+                                              echo "categoria=";
+                                              echo $_GET['categoria'];
+                                              echo "&";
+                                            }
+                                          } ?>pagina=<?php echo $pagina; ?>" class="page-link"><?php echo $pagina + 1 ?></a>
                     </li>
                 <?php }
                 } ?>
                 <li class="page-item">
-                  <a class="page-link" href="index.php?<?php  if (isset($_GET['categoria'])){echo "categoria=";  echo $_GET['categoria']; echo "&";} ?>pagina=<?php echo $num_paginas-1 ?>" aria-label="Next">
+                  <a class="page-link" href="index.php?<?php if (isset($_GET['buscar'])) {
+                                                          echo "buscar=";
+                                                          echo $_GET['buscar'];
+                                                          echo "&";
+                                                        } else {
+                                                          if (isset($_GET['categoria'])) {
+                                                            echo "categoria=";
+                                                            echo $_GET['categoria'];
+                                                            echo "&";
+                                                          }
+                                                        } ?>pagina=<?php echo $num_paginas - 1 ?>" aria-label="Next">
                     <span aria-hidden="true">&raquo;</span>
                   </a>
                 </li>
@@ -189,7 +236,7 @@ include_once('config/paginacao.php');
                     <span aria-hidden="true">&laquo;</span>
                   </a>
                 </li>
-                <?php for ($pagina = 0; $pagina < $num_paginas  ; $pagina++) { ?>
+                <?php for ($pagina = 0; $pagina < $num_paginas; $pagina++) { ?>
                   <?php if ($pagina == intval($_GET['pagina'])) { ?>
                     <li class="page-item active" aria-current="page">
                       <span class="page-link"><?php echo $pagina + 1 ?></span>
@@ -201,7 +248,7 @@ include_once('config/paginacao.php');
                 <?php }
                 } ?>
                 <li class="page-item">
-                  <a class="page-link" href="index.php?pagina=<?php echo $num_paginas-1 ?>" aria-label="Next">
+                  <a class="page-link" href="index.php?pagina=<?php echo $num_paginas - 1 ?>" aria-label="Next">
                     <span aria-hidden="true">&raquo;</span>
                   </a>
                 </li>
