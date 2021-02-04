@@ -14,6 +14,9 @@ if (isset($_GET['categoria'])){
         $buscar = mysqli_real_escape_string($conexao,$_GET['buscar']);
         $query = "SELECT * FROM `produto` WHERE `nome` LIKE '%$buscar%' ORDER BY `produto_id` ASC";
         $total_produtos = $conexao->query($query)->num_rows;
+        if ($total_produtos == 0){
+            $total_produtos = 1;
+        }
     }
     else{
         $query = "SELECT * FROM `produto` LIMIT $inicio_prod, 18";

@@ -22,9 +22,12 @@ include_once('config/paginacao.php');
   <link rel="mask-icon" href="img/favicon/safari-pinned-tab.svg" color="#5bbad5" />
   <link rel="shortcut icon" href="img/favicon/favicon.ico" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="node_modules/bootstrap/js/src/bootstrap-input-spinner.js"></script>
+
   <style>
     html {
-    overflow-y: scroll;
+      overflow-y: scroll;
     }
 
     :root {
@@ -37,8 +40,9 @@ include_once('config/paginacao.php');
     }
 
     body {
-    width: 100vw;
+      width: 100vw;
     }
+
     p.max-3l {
       display: -webkit-box;
       -webkit-line-clamp: 3;
@@ -86,6 +90,9 @@ include_once('config/paginacao.php');
                 <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
                   <li><a class="dropdown-item" href="#">Meus Dados</a></li>
                   <li><a class="dropdown-item" href="#">Meus Pedidos</a></li>
+                  <?php if ($_SESSION['permissao'] == 1) { ?>
+                    <li><a class="dropdown-item" href="admin.php">Admin</a></li>
+                  <?php } ?>
                   <li><a class="dropdown-item text-dark bg-danger" href="config/logout.php">Sair</a></li>
                 </ul>
               </li><?php } else { ?>
@@ -140,7 +147,7 @@ include_once('config/paginacao.php');
 
   <main class="mb-5 pb-3">
     <div class="container">
-              <?php if (isset($_GET['buscar'])) echo "<legend> Resultados para '$_GET[buscar]': </legend>" ?>
+      <?php if (isset($_GET['buscar'])) echo "<legend> Resultados para '$_GET[buscar]': </legend>" ?>
       <div class="row">
         <div class="col-12">
           <div class="d-flex flex-row-reverse justify-content-center justify-content-md-start">
@@ -215,12 +222,26 @@ include_once('config/paginacao.php');
                 </p>
               </div>
               <div class="card-footer">
-                <form class="d-block">
-                  <button class="btn btn-outline-primary">
-                    Adicionar ao carrinhox
-                  </button>
+                <form action="carrinho.php?acao=add&id=<?php echo $dados['produto_id'] ?>" method="post">
+                  <div class="input-group customSpinner">
+                    <button type="button" class="btn btn-outline-primary btn-sm spinnerbutton spinnerMinus spinner-roundbutton">
+                      <svg class="bi" width="16" height="16" fill="currentColor">
+                        <use xlink:href="bi.svg#caret-down"></use>
+                      </svg>
+                    </button>
+                    <input name="qnt" type="text" readonly value="1" class="text-center w-50 form-control spinnerVal spinner-roundVal" >
+                    <button type="button" class="btn btn-outline-primary btn-sm spinnerbutton spinnerPlus spinner-roundbutton">
+                      <svg class="bi" width="16" height="16" fill="currentColor">
+                        <use xlink:href="bi.svg#caret-up"></use>
+                      </svg>
+                    </button>
+                  </div>
+                    <button type="submit" class="btn btn-primary btn-md w-100">
+                      <svg class="bi" width="20" height="20" fill="currentColor">
+                        <use xlink:href="bi.svg#cart4"></use>
+                      </svg>
+                    </button>
                 </form>
-                <small class="text-success">3003,kg em estoque</small>
               </div>
             </div>
           </div>
@@ -232,7 +253,17 @@ include_once('config/paginacao.php');
             <nav class="d-inline-block">
               <ul class="pagination pagination-sm my-0">
                 <li class="page-item">
-                  <a class="page-link" href="index.php?pagina=0" aria-label="Previous">
+                  <a class="page-link" href="index.php?<?php if (isset($_GET['buscar'])) {
+                                                          echo "buscar=";
+                                                          echo $_GET['buscar'];
+                                                          echo "&";
+                                                        } else {
+                                                          if (isset($_GET['categoria'])) {
+                                                            echo "categoria=";
+                                                            echo $_GET['categoria'];
+                                                            echo "&";
+                                                          }
+                                                        } ?>pagina=0" aria-label="Previous">
                     <span aria-hidden="true">&laquo;</span>
                   </a>
                 </li>
@@ -243,12 +274,32 @@ include_once('config/paginacao.php');
                     </li>
                   <?php } else { ?>
                     <li class="page-item">
-                      <a href="index.php?pagina=<?php echo $pagina ?>" class="page-link"><?php echo $pagina + 1 ?></a>
+                      <a href="index.php?<?php if (isset($_GET['buscar'])) {
+                                            echo "buscar=";
+                                            echo $_GET['buscar'];
+                                            echo "&";
+                                          } else {
+                                            if (isset($_GET['categoria'])) {
+                                              echo "categoria=";
+                                              echo $_GET['categoria'];
+                                              echo "&";
+                                            }
+                                          } ?>pagina=<?php echo $pagina; ?>" class="page-link"><?php echo $pagina + 1 ?></a>
                     </li>
                 <?php }
                 } ?>
                 <li class="page-item">
-                  <a class="page-link" href="index.php?pagina=<?php echo $num_paginas - 1 ?>" aria-label="Next">
+                  <a class="page-link" href="index.php?<?php if (isset($_GET['buscar'])) {
+                                                          echo "buscar=";
+                                                          echo $_GET['buscar'];
+                                                          echo "&";
+                                                        } else {
+                                                          if (isset($_GET['categoria'])) {
+                                                            echo "categoria=";
+                                                            echo $_GET['categoria'];
+                                                            echo "&";
+                                                          }
+                                                        } ?>pagina=<?php echo $num_paginas - 1 ?>" aria-label="Next">
                     <span aria-hidden="true">&raquo;</span>
                   </a>
                 </li>
@@ -275,7 +326,6 @@ include_once('config/paginacao.php');
       </div>
     </div>
   </footer>
-
   <script src="node_modules/bootstrap/dist/js/bootstrap.bundle.js"></script>
 </body>
 

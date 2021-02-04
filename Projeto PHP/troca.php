@@ -92,7 +92,7 @@ session_start();
     </div>
   </nav>
 
-  <main>
+  <main class="pb-5 mb-5">
     <div class="container">
       <h1>POLÍTICA DE TROCA, DEVOLUÇÃO E ARREPENDIMENTO</h1>
       <hr>

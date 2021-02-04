@@ -1,5 +1,4 @@
 <?php
-session_start();
 include_once('config/verificarlogout.php');
 ?>
 
@@ -167,12 +166,12 @@ include_once('config/verificarlogout.php');
               <legend>Senha de Acesso</legend>
               <div class="mb-3">
                 <label for="txtSenha" class="form-label">Senha <span class="text-danger">*</span></label>
-                <input required name="cadsenha" type="text" class="form-control" id="txtSenha" />
+                <input required name="cadsenha" type="password" class="form-control" id="txtSenha" />
               </div>
               <div class="mb-3">
                 <label for="txtConfSenha" class="form-label">Confirme a Senha <span class="text-danger">*</span></label>
                 <?php if (isset($_SESSION['senha_errada'])){?>
-                  <input required name="cadconfsenha" type="text" class="form-control is-invalid" id="txtConfSenha" />
+                  <input required name="cadconfsenha" type="password" class="form-control is-invalid" id="txtConfSenha" />
                    <div class="invalid-feedback">
                     Senhas não coincidem.
                   </div><?php } else { ?>
