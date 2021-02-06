@@ -40,6 +40,31 @@ if (isset($_GET['alterar'])) {
     header("Location: meusdados.php");
     exit;
   }
+  if ($_GET['alterar'] == 'senha') {
+    $senhaAntiga = mysqli_real_escape_string($conexao, trim(md5($_POST['senhaAntiga'])));
+    $novasenha = mysqli_real_escape_string($conexao, trim(md5($_POST['novaSenha'])));
+    $confsenha = mysqli_real_escape_string($conexao, trim(md5($_POST['confSenha'])));
+
+    $sql = "SELECT senha from usuario where usuario_id = '$usuario_id' and senha = '$senhaAntiga'";
+    $result = $conexao->query($sql) or die('EWRRRO');
+    $dado = $result->fetch_assoc();
+    if (mysqli_num_rows($result) == 1) {
+      if ($novasenha != $confsenha) {
+        $_SESSION['senha_dif'] = true;
+        header("Location: meusdados.php");
+        exit;
+      }
+      $sql = "UPDATE `usuario` SET `senha` = '$novasenha' WHERE `usuario_id` = '$usuario_id'";
+      $result = $conexao->query($sql) or die('EWRRRO');
+      $_SESSION['dados_atualizado'] = true;
+      header("Location: meusdados.php");
+      exit();
+    } else {
+      $_SESSION['senha_incorreta'] =  true;
+      header("Location: meusdados.php");
+      exit();
+    }
+  }
 }
 ?>
 <!DOCTYPE html>
@@ -162,6 +187,20 @@ if (isset($_GET['alterar'])) {
         </div>
       <?php unset($_SESSION['email_existe']);
       } ?>
+      <?php if (isset($_SESSION['senha_dif'])) { ?>
+        <div id=sucesso class="alert alert-danger alert-dismissible fade show" role="alert">
+          <strong>Falha ao atualizar!</strong> Nova senha não coincide.
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+      <?php unset($_SESSION['senha_dif']);
+      } ?>
+            <?php if (isset($_SESSION['senha_incorreta'])) { ?>
+        <div id=sucesso class="alert alert-danger alert-dismissible fade show" role="alert">
+          <strong>Falha ao atualizar!</strong> Senha atual incorreta.
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+      <?php unset($_SESSION['senha_incorreta']);
+      } ?>
       <ul class="nav nav-tabs" id="myTab" role="tablist">
         <li class="nav-item" role="presentation">
           <a class="nav-link active " id="home-tab" data-bs-toggle="tab" href="#first-tab" role="tab" aria-controls="home" aria-selected="true">Meus Dados</a>
@@ -256,9 +295,43 @@ if (isset($_GET['alterar'])) {
           </form>
         </div>
         <div class="tab-pane" id="third-tab">
-
+          <form action="meusdados.php?alterar=senha" method="post">
+            <div class="box-info">
+              <header>
+                <h3 class="title-box-info"><svg class="bi" width="36" height="40" fill="currentColor">
+                    <use xlink:href="bi.svg#lock-fill"></use>
+                  </svg>
+                  Alterar Senha
+                </h3>
+                <button type="submit" class="btn bg-primary text-white f-right ico-pencil">Alterar</button>
+              </header>
+              <div class="box-info-grid ">
+                <div class="row justify-content-md-center">
+                  <div class="col-md-5">
+                    <label class="form-label">Senha atual</label>
+                    <input id="txtNumero" required name="senhaAntiga" type="password" class="form-control" />
+                  </div>
+                </div>
+                <div class="row justify-content-md-center">
+                  <div class="col-md-5">
+                    <label class="form-label">Nova senha</label>
+                    <input id="txtNumero" required name="novaSenha" type="password" class="form-control" />
+                  </div>
+                </div>
+                <div class="row justify-content-md-center">
+                  <div class="col-md-5">
+                    <label class="form-label">Repita a senha</label>
+                    <input id="txtNumero" required name="confSenha" type="password" class="form-control" />
+                  </div>
+                </div>
+              </div>
+            </div>
         </div>
       </div>
+    </div>
+    </form>
+    </div>
+    </div>
     </div>
   </main>
 
