@@ -11,7 +11,7 @@ $senha = mysqli_real_escape_string($conexao, $_POST['senha']);
 
 $query = "SELECT usuario_id, permissao, email, nome FROM usuario WHERE email = '$email' and senha = md5('$senha')";
 
-$result = mysqli_query($conexao, $query);
+$result = mysqli_query($conexao, $query) or die('error');
 
 if (mysqli_num_rows($result) == 1){
     $_SESSION += mysqli_fetch_assoc($result);

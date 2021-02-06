@@ -8,12 +8,13 @@ include_once('config/paginacao.php');
 <html lang="ptbr">
 
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale = 1.0" />
+<meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="msapplication-TileColor" content="#da532c" />
   <meta name="msapplication-config" content="img/favicon/browserconfig.xml" />
   <meta name="theme-color" content="#ffffff" />
   <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.css" />
+  <link rel="stylesheet" type="text/css" href="//assets.locaweb.com.br/locastyle/2.0.6/stylesheets/locastyle.css">
   <title>Feira PERNAMBUCANA</title>
   <link rel="apple-touch-icon" sizes="180x180" href="img/favicon/apple-touch-icon.png" />
   <link rel="icon" type="image/png" sizes="32x32" href="img/favicon/favicon-32x32.png" />
@@ -78,7 +79,7 @@ include_once('config/paginacao.php');
           </li>
           <form action="" method="get" class="d-flex ms-lg-5 col-5">
             <input name="buscar" class="form-control me-2" type="search" placeholder="Buscar produto" aria-label="Search" />
-            <button type="submit" class="btn btn-outline-primary"><i class="bi-search"></i>
+            <button type="submit" class="btn btn-outline-primary "><i class="bi-search"></i>
             </button>
           </form>
         </ul>
@@ -88,8 +89,8 @@ include_once('config/paginacao.php');
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false"><?php echo  strtok($_SESSION['nome'], " ") ?></a>
                 <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
-                  <li><a class="dropdown-item" href="#">Meus Dados</a></li>
-                  <li><a class="dropdown-item" href="#">Meus Pedidos</a></li>
+                  <li><a class="dropdown-item" href="meusdados.php">Meus Dados</a></li>
+                  <li><a class="dropdown-item" href="meuspedidos.php">Meus Pedidos</a></li>
                   <?php if ($_SESSION['permissao'] == 1) { ?>
                     <li><a class="dropdown-item" href="admin.php">Admin</a></li>
                   <?php } ?>
@@ -236,7 +237,7 @@ include_once('config/paginacao.php');
                       </svg>
                     </button>
                   </div>
-                    <button type="submit" class="btn btn-primary btn-md w-100">
+                    <button type="submit" class="btn text-white bg-primary btn-md w-100">
                       <svg class="bi" width="20" height="20" fill="currentColor">
                         <use xlink:href="bi.svg#cart4"></use>
                       </svg>

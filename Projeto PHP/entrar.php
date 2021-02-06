@@ -6,12 +6,13 @@ include_once('config/verificarlogout.php');
 <html lang="ptbr">
 
 <head>
-  <meta charset="utf-8" />
+<meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="msapplication-TileColor" content="#da532c" />
   <meta name="msapplication-config" content="img/favicon/browserconfig.xml" />
   <meta name="theme-color" content="#ffffff" />
   <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.css" />
+  <link rel="stylesheet" type="text/css" href="//assets.locaweb.com.br/locastyle/2.0.6/stylesheets/locastyle.css">
   <title>Feira PERNAMBUCANA</title>
   <link rel="apple-touch-icon" sizes="180x180" href="img/favicon/apple-touch-icon.png" />
   <link rel="icon" type="image/png" sizes="32x32" href="img/favicon/favicon-32x32.png" />
@@ -102,7 +103,7 @@ include_once('config/verificarlogout.php');
             <input type="checkbox" class="form-check-input" value="" id="chkLembrar">
             <label for="chkLembrar" class="form-check-label">Lembrar de mim</label>
           </div>
-          <button type="submit" class="btn btn-lg btn-primary" type="button">Entrar</button>
+          <button type="submit" class="btn btn-lg bg-primary text-white" type="button">Entrar</button>
           <p class="mb-3 mt-3">Ainda não é cadastrado? <a href="cadastrar.php">Clique aqui</a> para se cadastrar.</p>
           <p class="mb-3">Esqueceu sua senha? <a href="recuperarsenha.php">Cliquei aqui</a> para recuperá-la.</p>
         </form>

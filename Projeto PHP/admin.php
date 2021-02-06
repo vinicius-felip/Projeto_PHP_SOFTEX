@@ -26,12 +26,13 @@ if (isset($_POST['nome'])) {
 <html lang="ptbr">
 
 <head>
-  <meta charset="utf-8" />
+<meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="msapplication-TileColor" content="#da532c" />
   <meta name="msapplication-config" content="img/favicon/browserconfig.xml" />
   <meta name="theme-color" content="#ffffff" />
   <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.css" />
+  <link rel="stylesheet" type="text/css" href="//assets.locaweb.com.br/locastyle/2.0.6/stylesheets/locastyle.css">
   <title>Feira PERNAMBUCANA</title>
   <link rel="apple-touch-icon" sizes="180x180" href="img/favicon/apple-touch-icon.png" />
   <link rel="icon" type="image/png" sizes="32x32" href="img/favicon/favicon-32x32.png" />

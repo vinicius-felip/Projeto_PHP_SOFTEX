@@ -6,12 +6,13 @@ include_once('config/verificarlogout.php');
 <html lang="ptbr">
 
 <head>
-  <meta charset="utf-8" />
-  <meta name="cadviewport" content="width=device-width, initial-scale=1" />
-  <meta name="cadmsapplication-TileColor" content="#da532c" />
-  <meta name="cadmsapplication-config" content="img/favicon/browserconfig.xml" />
-  <meta name="cadtheme-color" content="#ffffff" />
+<meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="msapplication-TileColor" content="#da532c" />
+  <meta name="msapplication-config" content="img/favicon/browserconfig.xml" />
+  <meta name="theme-color" content="#ffffff" />
   <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.css" />
+  <link rel="stylesheet" type="text/css" href="//assets.locaweb.com.br/locastyle/2.0.6/stylesheets/locastyle.css">
   <title>Feira PERNAMBUCANA</title>
   <link rel="apple-touch-icon" sizes="180x180" href="img/favicon/apple-touch-icon.png" />
   <link rel="icon" type="image/png" sizes="32x32" href="img/favicon/favicon-32x32.png" />
@@ -89,12 +90,12 @@ include_once('config/verificarlogout.php');
   <main class="mb-5 pb-5">
     <div class="container">
       <h1>Informe seus dados, por favor</h1>
-      <hr />
+      <hr/>
       <form action="config/signin.php" method="POST">
         <div class="row">
           <div class="col-sm-12 col-md-6">
             <fieldset class="row">
-              <legend>Dados Pessoais</legend>
+              <legend class="text-dark">Dados Pessoais</legend>
               <div class="mb-3">
                 <label for="txtNome" class="form-label">Nome <span class="text-danger">*</span></label>
                 <input required name="cadnome" type="text" class="form-control" id="txtNome" value="<?php if (isset($_SESSION['senha_errada'])){echo$_SESSION['cadnome'];} unset($_SESSION['cadnome']) ?>" />
@@ -110,7 +111,7 @@ include_once('config/verificarlogout.php');
                 <input required name="cadcpf" type="text" class="form-control" id="txtCPF" value="<?php if (isset($_SESSION['senha_errada'])){echo$_SESSION['cadcpf'];} unset($_SESSION['cadcpf']) ?>" />
                 <?php } unset($_SESSION['cpf_existe']); ?>
               </div>
-              <div class="col-md-6 col-xl-4 mb-3">
+              <div class="col-md-6 col-xl-5 mb-3">
                 <label for="txtDataNascimento" class="form-label">Data de Nascimento <span class="text-danger">*</span></label>
                 <input required name="caddatanascimento" type="date" class="form-control" id="txtDataNascimento" max="<?php echo date('Y-m-d') ?>" value="<?php if (isset($_SESSION['senha_errada'])){echo$_SESSION['caddatanascimento'];} unset($_SESSION['caddatanascimento']) ?>" />
               </div>
@@ -137,7 +138,7 @@ include_once('config/verificarlogout.php');
           <div class="col-sm-12 col-md-6">
             <fieldset class="row">
               <legend>Endereço</legend>
-              <div class="mb-3 col-md-6 col-lg-4">
+              <div class="mb-3 col-md-6 col-lg-5">
                 <label for="textCEP" class="form-label">CEP <span class="text-danger">*</span></label>
                 <span class="form-text">(somente números)</span>
                 <div class="input-group">
@@ -146,8 +147,9 @@ include_once('config/verificarlogout.php');
                   </span>
                 </div>
               </div>
-              <div class="mb-3 col-md-6 col-lg-8 align-self-end"> 
-                <textarea id="endereco" class="form-control text-muted bg-light" style="height: 68px; resize: none;" disabled >Digite o CEP para buscarmos o endereço.</textarea>
+              <div class="mb-3 col-md-6 col-lg-7 align-self-end"> 
+              <label for="textCEP" class="form-label">Endereço <span class="text-danger">*</span></label>
+                <input name="cadendereco" readonly id="endereco" class="form-control text-muted bg-light" placeholder="Digite o CEP para buscarmos o endereço."></input>
               </div>
               <div class="mb-3 col-md-4">
                 <label for="txtNumero" class="form-label">Número <span class="text-danger">*</span></label>
@@ -175,17 +177,13 @@ include_once('config/verificarlogout.php');
                    <div class="invalid-feedback">
                     Senhas não coincidem.
                   </div><?php } else { ?>
-                <input required name="cadconfsenha" type="text" class="form-control" id="txtConfSenha" />
+                <input required name="cadconfsenha" type="password" class="form-control" id="txtConfSenha" />
                 <?php } unset($_SESSION['senha_errada']); ?>
               </div>
             </fieldset>
           </div>
         </div>
         <hr>
-        <div class="form-check mb-3">
-          <input type="checkbox" class="form-check-input" value="" id="chkPromocoes">
-          <label for="chkPromocoes" class="form-chekc-label">Desejo receber informações sobre promoções.</label>
-        </div>
         <div class="mb-3">
           <a class="btn btn-outline-danger" href="index.php">Cancelar</a>
           <input type="submit" value="Criar meu cadastro" class="btn btn-primary">

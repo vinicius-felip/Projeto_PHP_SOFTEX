@@ -41,12 +41,13 @@ if (isset($_GET['acao'])) {
 <html lang="ptbr">
 
 <head>
-  <meta charset="utf-8" />
+<meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="msapplication-TileColor" content="#da532c" />
   <meta name="msapplication-config" content="img/favicon/browserconfig.xml" />
   <meta name="theme-color" content="#ffffff" />
   <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.css" />
+  <link rel="stylesheet" type="text/css" href="//assets.locaweb.com.br/locastyle/2.0.6/stylesheets/locastyle.css">
   <title>Feira PERNAMBUCANA</title>
   <link rel="apple-touch-icon" sizes="180x180" href="img/favicon/apple-touch-icon.png" />
   <link rel="icon" type="image/png" sizes="32x32" href="img/favicon/favicon-32x32.png" />
@@ -198,7 +199,7 @@ if (isset($_GET['acao'])) {
         <h4 class="text-dark mb-3">Valor Total: R$ <?php echo number_format($total, 2, ',', '.') ?></h4>
         <a href="carrinho.php?acao=excluirCarrinho" class="btn btn-outline-danger btn-lg">Excluir Carrinho</a>
         <a href="index.php" class="btn btn-outline-success btn-lg">Continuar Comprando</a>
-        <button name="total" type="submit" class="btn btn-primary btn-lg" value="<?php echo $total ?>">Finalizar Compras</button>
+        <button name="total" type="submit" class="btn bg-primary text-white btn-lg" value="<?php echo $total ?>">Finalizar Compras</button>
       </div>
     </form>
     </li>

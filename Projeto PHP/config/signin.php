@@ -1,8 +1,7 @@
 <?php
 session_start();
 include('conexao.php');
-
-
+print_r($_POST);
 $nome = mysqli_real_escape_string($conexao, $_POST['cadnome']);
 $cpf = mysqli_real_escape_string($conexao,trim($_POST['cadcpf']));
 $data_nascimento = mysqli_real_escape_string($conexao,trim($_POST['caddatanascimento']));
@@ -14,6 +13,7 @@ $complemento = mysqli_real_escape_string($conexao,trim($_POST['cadcomplemento'])
 $referencia = mysqli_real_escape_string($conexao,trim($_POST['cadreferencia']));
 $senha = mysqli_real_escape_string($conexao,trim(md5($_POST['cadsenha'])));
 $confsenha = mysqli_real_escape_string($conexao,trim(md5($_POST['cadconfsenha'])));
+$endereco = mysqli_real_escape_string($conexao,trim($_POST['cadendereco']));
 
 
 $sql = "SELECT COUNT(*) as total from usuario where cpf = '$cpf'";
@@ -44,7 +44,7 @@ if ($senha != $confsenha){
     exit;
 }
 
-$sql = "INSERT INTO usuario (nome, cpf, data_nascimento, email, telefone, cep, numero, complemento, referencia, senha, data_cadastro) VALUES ('$nome', '$cpf', '$data_nascimento', '$email', '$telefone', '$cep', '$numero', '$complemento', '$referencia', '$senha', now())";
+$sql = "INSERT INTO usuario (nome, cpf, data_nascimento, email, telefone, cep, endereco, numero, complemento, referencia, senha, data_cadastro) VALUES ('$nome', '$cpf', '$data_nascimento', '$email', '$telefone', '$cep', '$endereco', '$numero', '$complemento', '$referencia', '$senha', now())";
 
 
 if ($conexao->query($sql) === TRUE){

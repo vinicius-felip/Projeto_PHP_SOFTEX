@@ -7,12 +7,13 @@ session_start();
 <html lang="ptbr">
 
 <head>
-  <meta charset="utf-8" />
+<meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="msapplication-TileColor" content="#da532c" />
   <meta name="msapplication-config" content="img/favicon/browserconfig.xml" />
   <meta name="theme-color" content="#ffffff" />
   <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.css" />
+  <link rel="stylesheet" type="text/css" href="//assets.locaweb.com.br/locastyle/2.0.6/stylesheets/locastyle.css">
   <title>Feira PERNAMBUCANA</title>
   <link rel="apple-touch-icon" sizes="180x180" href="img/favicon/apple-touch-icon.png" />
   <link rel="icon" type="image/png" sizes="32x32" href="img/favicon/favicon-32x32.png" />
@@ -112,7 +113,7 @@ session_start();
             <textarea class="form-control" id="txtMensagem" placeholder=" " style="height: 200px;"></textarea>
             <label for="txtMensagem">Mensagem</label>
           </div>
-          <button class="btn btn-lg btn-primary mb-3" type="button" onclick="window.location.href=''">Enviar Mensagem</button>
+          <button class="btn btn-lg bg-primary text-white mb-3" type="button" onclick="window.location.href=''">Enviar Mensagem</button>
           <p class="mb-3">
             Faremos nosso melhor para responder sua mensagem em até 2 dias úteis.
           </p>
