@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 04-Fev-2021 às 03:49
+-- Tempo de geração: 06-Fev-2021 às 16:32
 -- Versão do servidor: 10.4.17-MariaDB
 -- versão do PHP: 8.0.0
 
@@ -34,15 +34,6 @@ CREATE TABLE `pedidos` (
   `data_pedido` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Extraindo dados da tabela `pedidos`
---
-
-INSERT INTO `pedidos` (`pedido_id`, `usuario`, `valor_pedido`, `data_pedido`) VALUES
-(1, 1, '8.75', '2021-02-03 21:43:46'),
-(2, 1, '54.25', '2021-02-03 22:05:04'),
-(3, 1, '24.00', '2021-02-03 23:08:14');
-
 -- --------------------------------------------------------
 
 --
@@ -54,17 +45,6 @@ CREATE TABLE `pedido_produto` (
   `produto_id` int(11) NOT NULL,
   `quantidade` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Extraindo dados da tabela `pedido_produto`
---
-
-INSERT INTO `pedido_produto` (`pedido_id`, `produto_id`, `quantidade`) VALUES
-(1, 6, 1),
-(1, 3, 2),
-(2, 6, 11),
-(2, 10, 8),
-(3, 4, 8);
 
 -- --------------------------------------------------------
 
@@ -167,6 +147,7 @@ CREATE TABLE `usuario` (
   `email` varchar(200) NOT NULL,
   `telefone` varchar(11) NOT NULL,
   `cep` varchar(11) NOT NULL,
+  `endereco` varchar(200) NOT NULL,
   `numero` varchar(20) NOT NULL,
   `complemento` varchar(255) NOT NULL,
   `referencia` varchar(255) NOT NULL,
@@ -178,8 +159,8 @@ CREATE TABLE `usuario` (
 -- Extraindo dados da tabela `usuario`
 --
 
-INSERT INTO `usuario` (`usuario_id`, `permissao`, `nome`, `cpf`, `data_nascimento`, `email`, `telefone`, `cep`, `numero`, `complemento`, `referencia`, `senha`, `data_cadastro`) VALUES
-(1, 1, 'Vinicius Felipe da Silva', '12687798495', '1999-11-17', 'viniciusfelipe.xd@gmail.com', '81986551831', '53441080', '103', 'Bloco 06, Quadra 58', 'perto do bar do farias', 'e10adc3949ba59abbe56e057f20f883e', '2021-01-29 18:00:52');
+INSERT INTO `usuario` (`usuario_id`, `permissao`, `nome`, `cpf`, `data_nascimento`, `email`, `telefone`, `cep`, `endereco`, `numero`, `complemento`, `referencia`, `senha`, `data_cadastro`) VALUES
+(1, 1, 'Vinicius Felipe da Silva', '', '0000-00-00', 'admin@admin.com', '', '', '', '', '', '', 'e10adc3949ba59abbe56e057f20f883e', '2021-02-05 21:49:30');
 
 --
 -- Índices para tabelas despejadas
@@ -219,7 +200,7 @@ ALTER TABLE `usuario`
 -- AUTO_INCREMENT de tabela `pedidos`
 --
 ALTER TABLE `pedidos`
-  MODIFY `pedido_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `pedido_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de tabela `produto`

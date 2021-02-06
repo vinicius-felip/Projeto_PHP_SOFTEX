@@ -186,7 +186,7 @@ include_once('config/verificarlogout.php');
         <hr>
         <div class="mb-3">
           <a class="btn btn-outline-danger" href="index.php">Cancelar</a>
-          <input type="submit" value="Criar meu cadastro" class="btn btn-primary">
+          <input type="submit" value="Criar meu cadastro" class="btn bg-primary text-white">
         </div>
       </form>
     </div>

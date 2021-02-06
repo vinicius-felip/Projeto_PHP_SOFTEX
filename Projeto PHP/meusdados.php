@@ -1,5 +1,5 @@
 <?php
-session_start();
+require('config/verificarlogin.php');
 require('config/conexao.php');
 $usuario_id = $_SESSION['usuario_id'];
 
@@ -7,16 +7,16 @@ $sql = "SELECT * FROM `usuario` WHERE `usuario_id` = '$usuario_id'";
 $result = $conexao->query($sql) or die('EWRRRO');
 $dados = mysqli_fetch_assoc($result);
 
-if (isset($_GET['alterar'] )){
-  if ($_GET['alterar'] == 'dados'){
-    $email = mysqli_real_escape_string($conexao,trim($_POST['email']));
-    $telefone = $telefone = mysqli_real_escape_string($conexao,trim($_POST['telefone']));
+if (isset($_GET['alterar'])) {
+  if ($_GET['alterar'] == 'dados') {
+    $email = mysqli_real_escape_string($conexao, trim($_POST['email']));
+    $telefone = $telefone = mysqli_real_escape_string($conexao, trim($_POST['telefone']));
     $sql = "SELECT usuario_id from usuario where email = '$email'";
     $result = mysqli_query($conexao, $sql);
     $qntemail = mysqli_num_rows($result);
-    if ($qntemail == 1){
-      if (intval($id['usuario_id'] = $result->fetch_assoc()) != $usuario_id){
-        $_SESSION['email_existe'] = true; 
+    if ($qntemail == 1) {
+      if (intval($id['usuario_id'] = $result->fetch_assoc()) != $usuario_id) {
+        $_SESSION['email_existe'] = true;
         header('Location: meusdados.php');
         exit;
       }
@@ -27,12 +27,12 @@ if (isset($_GET['alterar'] )){
     header("Location: meusdados.php");
     exit;
   }
-  if ($_GET['alterar'] == 'endereco'){
-    $cep = mysqli_real_escape_string($conexao,trim($_POST['cep']));
-    $endereco = mysqli_real_escape_string($conexao,trim($_POST['endereco']));
-    $numero = mysqli_real_escape_string($conexao,trim($_POST['numero']));
-    $complemento = mysqli_real_escape_string($conexao,trim($_POST['complemento']));
-    $referencia = mysqli_real_escape_string($conexao,trim($_POST['referencia']));
+  if ($_GET['alterar'] == 'endereco') {
+    $cep = mysqli_real_escape_string($conexao, trim($_POST['cep']));
+    $endereco = mysqli_real_escape_string($conexao, trim($_POST['endereco']));
+    $numero = mysqli_real_escape_string($conexao, trim($_POST['numero']));
+    $complemento = mysqli_real_escape_string($conexao, trim($_POST['complemento']));
+    $referencia = mysqli_real_escape_string($conexao, trim($_POST['referencia']));
 
     $sql = "UPDATE `usuario` SET `cep` = '$cep', `endereco` = '$endereco', `numero` = '$numero', `complemento` = '$complemento', `referencia` = '$referencia' WHERE `usuario_id` = '$usuario_id'";
     $result = $conexao->query($sql) or die('EWRRRO');
@@ -63,7 +63,7 @@ if (isset($_GET['alterar'] )){
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js">
   </script>
-    <script type="text/javascript">
+  <script type="text/javascript">
     setTimeout(function() {
       document.getElementById("sucesso").style.display = "none";
     }, 3000);
@@ -148,18 +148,20 @@ if (isset($_GET['alterar'] )){
 
   <main class="mb-5 pb-5">
     <div class="container">
-    <?php if (isset($_SESSION['dados_atualizado'])) { ?>
+      <?php if (isset($_SESSION['dados_atualizado'])) { ?>
         <div id=sucesso class="alert alert-success alert-dismissible fade show" role="alert">
           <strong>Sucesso!</strong> Seus dados foram atualizados.
           <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
-      <?php unset($_SESSION['dados_atualizado']);}?>
+      <?php unset($_SESSION['dados_atualizado']);
+      } ?>
       <?php if (isset($_SESSION['email_existe'])) { ?>
         <div id=sucesso class="alert alert-danger alert-dismissible fade show" role="alert">
           <strong>Falha ao atualizar!</strong> E-mail já está sendo utilizado.
           <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
-      <?php unset($_SESSION['email_existe']);}?>
+      <?php unset($_SESSION['email_existe']);
+      } ?>
       <ul class="nav nav-tabs" id="myTab" role="tablist">
         <li class="nav-item" role="presentation">
           <a class="nav-link active " id="home-tab" data-bs-toggle="tab" href="#first-tab" role="tab" aria-controls="home" aria-selected="true">Meus Dados</a>
@@ -180,7 +182,7 @@ if (isset($_GET['alterar'] )){
                   Dados Pessoais
                   <small>Cliente desde: <?php echo $dados['data_cadastro'] ?></small>
                 </h3>
-                <button type="submit" class="btn bg-primary text-white f-right ico-pencil">Alterar</button> 
+                <button type="submit" class="btn bg-primary text-white f-right ico-pencil">Alterar</button>
               </header>
               <div class="box-info-grid row-fluid">
                 <div class="col-md-4">
@@ -230,18 +232,18 @@ if (isset($_GET['alterar'] )){
               </div>
               <div class="box-info-grid">
                 <div class="row">
-                <div class="col-md-3 ">
-                  <label for="txtCPF" CPF class="form-label">CEP <span class="text-danger">*</span></label>
-                  <input required name="cep" type="text" class="form-control" id="textCEP" value="<?php echo $dados['cep'] ?>">
-                </div>
-                <div class="col-md-2">
-                  <label class="form-label">Número <span class="text-danger">*</span></label>
-                  <input id="txtNumero" required name="numero" type="text" class="form-control" value="<?php echo $dados['numero'] ?>" />
-                </div>
-                <div class="col-md-7">
-                  <label for="txtDataNascimento" class="form-label">Complemento</label>
-                  <input name="complemento" type="text" class="form-control" value="<?php echo $dados['complemento'] ?>" />
-                </div>
+                  <div class="col-md-3 ">
+                    <label for="txtCPF" CPF class="form-label">CEP <span class="text-danger">*</span></label>
+                    <input required name="cep" type="text" class="form-control" id="textCEP" value="<?php echo $dados['cep'] ?>">
+                  </div>
+                  <div class="col-md-2">
+                    <label class="form-label">Número <span class="text-danger">*</span></label>
+                    <input id="txtNumero" required name="numero" type="text" class="form-control" value="<?php echo $dados['numero'] ?>" />
+                  </div>
+                  <div class="col-md-7">
+                    <label for="txtDataNascimento" class="form-label">Complemento</label>
+                    <input name="complemento" type="text" class="form-control" value="<?php echo $dados['complemento'] ?>" />
+                  </div>
                 </div>
               </div>
               <div class="box-info-grid row-fluid">
@@ -254,6 +256,7 @@ if (isset($_GET['alterar'] )){
           </form>
         </div>
         <div class="tab-pane" id="third-tab">
+
         </div>
       </div>
     </div>
