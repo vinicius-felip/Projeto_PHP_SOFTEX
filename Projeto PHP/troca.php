@@ -5,7 +5,7 @@ session_start();
 <html lang="ptbr">
 
 <head>
-<meta charset="utf-8" />
+  <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="msapplication-TileColor" content="#da532c" />
   <meta name="msapplication-config" content="img/favicon/browserconfig.xml" />
@@ -22,7 +22,7 @@ session_start();
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
   <style>
     html {
-    overflow-y: scroll;
+      overflow-y: scroll;
     }
 
     :root {
@@ -35,7 +35,7 @@ session_start();
     }
 
     body {
-    width: 100vw;
+      width: 100vw;
     }
   </style>
 </head>
@@ -57,7 +57,7 @@ session_start();
               Lista de produtos
             </a>
             <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
-            <li><a href="index.php?categoria=verduras/legumes" class="dropdown-item" href="#">Verduras/Legumes</a></li>
+              <li><a href="index.php?categoria=verduras/legumes" class="dropdown-item" href="#">Verduras/Legumes</a></li>
               <li><a href="index.php?categoria=frutas" class="dropdown-item" href="#">Frutas</a></li>
               <li><a href="index.php?categoria=folhagens" class="dropdown-item" href="#">Folhagens</a></li>
               <li><a href="index.php?categoria=raizes/tuberculos" class="dropdown-item" href="#">Raízes/Tubérculos</a></li>
@@ -66,12 +66,12 @@ session_start();
         </ul>
         <div class="align-self-end">
           <ul class="navbar-nav">
-          <?php if (isset($_SESSION['nome'])) { ?>
+            <?php if (isset($_SESSION['nome'])) { ?>
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false"><?php echo  strtok($_SESSION['nome'], " ") ?></a>
                 <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
-                  <li><a class="dropdown-item" href="#">Meus Dados</a></li>
-                  <li><a class="dropdown-item" href="#">Meus Pedidos</a></li>
+                  <li><a class="dropdown-item" href="meusdados.php">Meus Dados</a></li>
+                  <li><a class="dropdown-item" href="meuspedidos.php">Meus Pedidos</a></li>
                   <li><a class="dropdown-item text-dark bg-danger" href="config/logout.php">Sair</a></li>
                 </ul>
               </li><?php } else { ?>
@@ -81,11 +81,11 @@ session_start();
               <li class="nav-item">
                 <a href="entrar.php" class="nav-link text-white">Entrar</a>
               </li><?php } ?>
-              <a href="carrinho.php" class="nav-link text-white">
-                <svg class="bi" width="24" height="24" fill="currentColor">
-                  <use xlink:href="bi.svg#cart3" />
-                </svg>
-              </a>
+            <a href="carrinho.php" class="nav-link text-white">
+              <svg class="bi" width="24" height="24" fill="currentColor">
+                <use xlink:href="bi.svg#cart3" />
+              </svg>
+            </a>
             </li>
           </ul>
         </div>

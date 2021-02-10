@@ -99,10 +99,6 @@ include_once('config/verificarlogout.php');
             <input name="senha" type="password" class="form-control" autofocus id="txtSenha" placeholder=" " />
             <label for="txtSenha">Senha</label>
           </div>
-          <div class="form-check mb-3">
-            <input type="checkbox" class="form-check-input" value="" id="chkLembrar">
-            <label for="chkLembrar" class="form-check-label">Lembrar de mim</label>
-          </div>
           <button type="submit" class="btn btn-lg bg-primary text-white" type="button">Entrar</button>
           <p class="mb-3 mt-3">Ainda não é cadastrado? <a href="cadastrar.php">Clique aqui</a> para se cadastrar.</p>
           <p class="mb-3">Esqueceu sua senha? <a href="recuperarsenha.php">Cliquei aqui</a> para recuperá-la.</p>

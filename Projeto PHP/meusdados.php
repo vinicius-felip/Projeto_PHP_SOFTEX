@@ -1,5 +1,10 @@
 <?php
-require('config/verificarlogin.php');
+session_start();
+if (!$_SESSION['email']){
+    header('Location: entrar.php');
+    exit();
+}
+
 require('config/conexao.php');
 $usuario_id = $_SESSION['usuario_id'];
 

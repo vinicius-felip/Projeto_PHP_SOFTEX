@@ -141,14 +141,14 @@ include_once('config/verificarlogout.php');
               <div class="mb-3 col-md-6 col-lg-5">
                 <label for="textCEP" class="form-label">CEP <span class="text-danger">*</span></label>
                 <span class="form-text">(somente números)</span>
-                <div class="input-group">
-                  <input required name="cadcep" type="text" class="form-control" id="textCEP">
-                  <span class="input-group-text p-1"><i class="bi bi-hourglass-split" style="font-size: 20px;"></i>
-                  </span>
-                </div>
+                  <div class="input-group">
+                    <input required name="cadcep" type="text" class="form-control" id="textCEP">
+                    <span class="input-group-text p-1"><i class="bi bi-hourglass-split" style="font-size: 20px;"></i>
+                    </span>
+                  </div>
               </div>
               <div class="mb-3 col-md-6 col-lg-7 align-self-end"> 
-              <label for="textCEP" class="form-label">Endereço <span class="text-danger">*</span></label>
+                <label for="textCEP" class="form-label">Endereço <span class="text-danger">*</span></label>
                 <input name="cadendereco" readonly id="endereco" class="form-control text-muted bg-light" placeholder="Digite o CEP para buscarmos o endereço."></input>
               </div>
               <div class="mb-3 col-md-4">

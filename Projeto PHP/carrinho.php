@@ -1,6 +1,6 @@
 <?php
 session_start();
-require('config/conexao.php');
+require('config/conexao.php');  
 
 if (!isset($_SESSION['carrinho'])) {
   $_SESSION['carrinho'] = array();
@@ -108,8 +108,8 @@ if (isset($_GET['acao'])) {
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false"><?php echo  strtok($_SESSION['nome'], " ") ?></a>
                 <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
-                  <li><a class="dropdown-item" href="#">Meus Dados</a></li>
-                  <li><a class="dropdown-item" href="#">Meus Pedidos</a></li>
+                  <li><a class="dropdown-item" href="meusdados.php">Meus Dados</a></li>
+                  <li><a class="dropdown-item" href="meuspedidos.php">Meus Pedidos</a></li>
                   <li><a class="dropdown-item text-dark bg-danger" href="config/logout.php">Sair</a></li>
                 </ul>
               </li><?php } else { ?>
@@ -194,14 +194,12 @@ if (isset($_GET['acao'])) {
               <button type="submit" class="btn btn-warning btn-lg">Atualizar Carrinho</button>
       </form>
     </div>
-    <form action="config/finalizar.php" method="POST">
       <div class="text-end">
-        <h4 class="text-dark mb-3">Valor Total: R$ <?php echo number_format($total, 2, ',', '.') ?></h4>
+        <h4 class="text-dark mb-3">Valor Total: R$ <?php $_SESSION['total'] = $total; echo number_format($total, 2, ',', '.') ?></h4>
         <a href="carrinho.php?acao=excluirCarrinho" class="btn btn-outline-danger btn-lg">Excluir Carrinho</a>
         <a href="index.php" class="btn btn-outline-success btn-lg">Continuar Comprando</a>
-        <button name="total" type="submit" class="btn bg-primary text-white btn-lg" value="<?php echo $total ?>">Finalizar Compras</button>
+        <a href="pagamento.php" class="btn bg-primary text-white btn-lg" >Pagamento</a>
       </div>
-    </form>
     </li>
     </ul>
     </div>

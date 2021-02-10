@@ -1,14 +1,13 @@
 <?php
 include('conexao.php');
 include('verificarlogin.php');
-print_r($_SESSION); 
-print_r($_POST);
 
 if (count($_SESSION['carrinho']) !=0){
     $usuario_id = $_SESSION['usuario_id'];
-    $total = floatval($_POST['total']);
+    $total = floatval($_SESSION['total']);
+    $pagamento = mysqli_real_escape_string($conexao,$_POST['pagamento']);
 
-    $sql = "INSERT INTO `pedidos` (`usuario`, `valor_pedido`, `data_pedido`) VALUES ('$usuario_id', '$total', now())";
+    $sql = "INSERT INTO `pedidos` (`usuario`, `valor_pedido`, `pagamento`, `status`, `data_pedido`) VALUES ('$usuario_id', '$total', '$pagamento' , 1, now())";
 
     $conexao->query($sql) or die('ERRO');
 
@@ -22,4 +21,5 @@ if (count($_SESSION['carrinho']) !=0){
     $_SESSION['carrinho'] = array();
 }
 header("Location: ../index.php");
+exit;
 
