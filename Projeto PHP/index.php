@@ -117,33 +117,35 @@ include_once('config/paginacao.php');
   </nav>
 
   <header class="container">
-    <div id="carouselMain" class="carousel carousel-light slide" data-bs-ride="carousel">
-      <ol class="carousel-indicators">
-        <li data-bs-target="#carouselMain" data-bs-slide-to="0" class="active"></li>
-        <li data-bs-target="#carouselMain" data-bs-slide-to="1"></li>
-        <li data-bs-target="#carouselMain" data-bs-slide-to="2"></li>
-      </ol>
-      <div class="carousel-inner">
-        <div class="carousel-item active">
-          <img src="img/slide02.jpg" alt="teste" class="img-fluid w-100" />
+    <div class="col-10 offset-1">
+      <div id="carouselMain" class="carousel carousel-light slide" data-bs-ride="carousel">
+        <ol class="carousel-indicators">
+          <li data-bs-target="#carouselMain" data-bs-slide-to="0" class="active"></li>
+          <li data-bs-target="#carouselMain" data-bs-slide-to="1"></li>
+          <li data-bs-target="#carouselMain" data-bs-slide-to="2"></li>
+        </ol>
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <img src="img/slide02.jpg" alt="teste" class="img-fluid w-100" />
+          </div>
+          <div class="carousel-item">
+            <img src="img/slide02.jpg" alt="teste" class="img-fluid w-100" />
+          </div>
+          <div class="carousel-item">
+            <img src="img/slide02.jpg" alt="teste" class="img-fluid w-100" />
+          </div>
         </div>
-        <div class="carousel-item">
-          <img src="img/slide02.jpg" alt="teste" class="img-fluid w-100" />
-        </div>
-        <div class="carousel-item">
-          <img src="img/slide02.jpg" alt="teste" class="img-fluid w-100" />
-        </div>
+        <a href="#carouselMain" role="button" data-bs-slide="prev" class="carousel-control-prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Próximo</span>
+        </a>
+        <a href="#carouselMain" role="button" data-bs-slide="next" class="carousel-control-next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Anterior</span>
+        </a>
       </div>
-      <a href="#carouselMain" role="button" data-bs-slide="prev" class="carousel-control-prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Próximo</span>
-      </a>
-      <a href="#carouselMain" role="button" data-bs-slide="next" class="carousel-control-next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Anterior</span>
-      </a>
+      <hr class="mt-3" />
     </div>
-    <hr class="mt-3" />
   </header>
 
   <main class="mb-5 pb-3">
