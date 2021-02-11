@@ -152,14 +152,11 @@ if (isset($_GET['acao'])) {
                 <div class="row g-3">
                   <div class="col-4 col-md-3 col-lg-2">
                     <a href="#">
-                      <img src="img/produtos/<?php echo $dados['produto_id'] ?>.jpg" class="img-thumbnail">
+                      <img src="img/produtos/<?php echo $dados['foto'] ?>" class="img-thumbnail">
                     </a>
                   </div>
                   <div class="col-8 col-md-9 col-lg-8 col-xl-8 text-left align-self-center">
                     <h4><b><a href="http://localhost/php/Projeto%20PHP/index.php?buscar=<?php echo $dados['nome'] ?>" class="text-decoration-none text-primary"><?php echo $dados['nome'] ?></a></b></h4>
-                    <h5 class="text-muted">
-                      <small><?php echo $dados['detalhe'] ?></small>
-                    </h5>
                   </div>
                   <div class="col-6 offset-6 col-sm-4 offset-sm-6 cold-md-4 offset-md-8 col-lg-2 offset-lg-0 align-self-center mt-3">
                     <div class="input-group customSpinner">
@@ -181,7 +178,7 @@ if (isset($_GET['acao'])) {
                       </a>
                     </div>
                     <div class="text-end mt-2">
-                      <small class="text-secondary">Valor Kg: R$ <?php echo number_format($dados['preco'], 2, ',', '.') ?></small><br>
+                      <small class="text-secondary">Valor <?php echo $dados['detalhe'] ?>: R$ <?php echo number_format($dados['preco'], 2, ',', '.') ?></small><br>
                       <span class="text-dark">Valor Item: R$ <?php echo number_format($dados['preco'] * $qnt, 2, ',', '.') ?></span>
                     </div>
                   </div>

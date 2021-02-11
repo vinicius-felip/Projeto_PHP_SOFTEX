@@ -6,20 +6,20 @@ $inicio_prod = intval($_GET['pagina']*18);
 
 if (isset($_GET['categoria'])){
     $categoria = mysqli_real_escape_string($conexao,$_GET['categoria']);
-    $query = "SELECT * FROM `produto` WHERE categoria = '$categoria' LIMIT $inicio_prod, 18";
+    $query = "SELECT * FROM `produto` WHERE categoria = '$categoria' ORDER BY `produto`.`nome` ASC LIMIT $inicio_prod, 18";
     $total_produtos = $conexao->query("SELECT * FROM produto WHERE categoria = '$categoria'")->num_rows;
 
 }else{
     if(isset($_GET['buscar'])){
         $buscar = mysqli_real_escape_string($conexao,$_GET['buscar']);
-        $query = "SELECT * FROM `produto` WHERE `nome` LIKE '%$buscar%' ORDER BY `produto_id` ASC LIMIT $inicio_prod , 18";
-        $total_produtos = $conexao->query("SELECT * FROM `produto` WHERE `nome` LIKE '%$buscar%' ORDER BY `produto_id` ASC")->num_rows;
+        $query = "SELECT * FROM `produto` WHERE `nome` LIKE '%$buscar%' ORDER BY `produto`.`nome` ASC  LIMIT $inicio_prod , 18";
+        $total_produtos = $conexao->query("SELECT * FROM `produto` WHERE `nome` LIKE '%$buscar%' ORDER BY `produto`.`nome` ASC ")->num_rows;
         if ($total_produtos == 0){
             $total_produtos = 1;
         }
     }
     else{
-        $query = "SELECT * FROM `produto` LIMIT $inicio_prod, 18";
+        $query = "SELECT * FROM `produto` ORDER BY `produto`.`nome` ASC LIMIT $inicio_prod, 18";
         $total_produtos = $conexao->query("SELECT * FROM produto")->num_rows;
     }
 }

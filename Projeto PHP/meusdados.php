@@ -1,11 +1,7 @@
 <?php
-session_start();
-if (!$_SESSION['email']){
-    header('Location: entrar.php');
-    exit();
-}
-
+require('config/verificarlogin.php');
 require('config/conexao.php');
+
 $usuario_id = $_SESSION['usuario_id'];
 
 $sql = "SELECT * FROM `usuario` WHERE `usuario_id` = '$usuario_id'";

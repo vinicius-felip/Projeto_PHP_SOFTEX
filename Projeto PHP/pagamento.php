@@ -1,13 +1,9 @@
 <?php
-session_start();
+require('config/verificarlogin.php');
 require('config/conexao.php');
 if (count($_SESSION['carrinho']) ==0){
   header("Location: index.php");
   exit;
-}
-if (!$_SESSION['email']){
-  header('Location: entrar.php');
-  exit();
 }
 $usuario_id = $_SESSION['usuario_id'];
 
@@ -125,7 +121,7 @@ $dados = mysqli_fetch_assoc($result);
                   <img src="img/boleto.png" class="card-img-top" alt="">
                   <div class="card-body">
                     <div class="form-check">
-                      <input class="form-check-input" type="radio" name="pagamento" id="exampleRadios1" value="boleto" checked>
+                      <input class="form-check-input" type="radio" name="pagamento" id="exampleRadios1" value="Boleto Bancário" checked>
                       <label class="form-check-label" for="exampleRadios1">
                         Boleto Bancário
                       </label>

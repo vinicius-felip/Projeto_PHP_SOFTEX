@@ -99,7 +99,7 @@ session_start();
   <main class="mb-5 pb-5">
     <div class="container">
       <div class="row justify-content-center">
-        <form class="col-sm-10 col-md8 col-lg-6">
+        <form class="col-sm-10 col-md-8 col-lg-6 ">
           <h1 class="mb-3">Entre em Contato</h1>
           <div class="form-floating mb-3">
             <input type="text" class="form-control" autofocus id="txtEmail" placeholder=" ">

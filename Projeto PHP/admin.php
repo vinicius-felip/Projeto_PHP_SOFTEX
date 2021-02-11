@@ -3,12 +3,13 @@
 include_once('config/conexao.php');
 
 if (isset($_POST['nome'])) {
+  $nome_arquivo = strval($_POST['nome']).substr($_FILES['foto']['name'],-4);
   $nome = mysqli_real_escape_string($conexao, $_POST['nome']);
-  move_uploaded_file($_FILES['foto']['tmp_name'],"img/produtos/".$_FILES['foto']['name']);
+  move_uploaded_file($_FILES['foto']['tmp_name'],"img/produtos/".$nome_arquivo);
   $categoria = mysqli_real_escape_string($conexao, $_POST['categoria']);
   $detalhe = mysqli_real_escape_string($conexao, $_POST['detalhe']);
   $preco = mysqli_real_escape_string($conexao, $_POST['preco']);
-  $foto = mysqli_real_escape_string($conexao,$_FILES['foto']['name']);
+  $foto = mysqli_real_escape_string($conexao,$nome_arquivo);
 
 
   $sql = "INSERT INTO produto (categoria, nome, detalhe, preco, foto) VALUES ('$categoria', '$nome', '$detalhe', '$preco', '$foto')";
@@ -106,15 +107,15 @@ if (isset($_POST['nome'])) {
               <option value="raizes/tuberculos">Raízes/Tubérculos</option>
             </select>
           </div>
-          <div class="col-3 form-group">
+          <div class="col-lg-3 col-12 form-group">
             <label for="formGroupExampleInput2">Nome do produto</label>
             <input  name="nome" type="text" class="form-control" id="formGroupExampleInput2" placeholder="">
           </div>
-          <div class="col-3 form-group ">
+          <div class="col-lg-3 col-12 form-group ">
             <label for="formGroupExampleInput">Descrição do produto</label>
             <input  name="detalhe" type="text" class="form-control" id="formGroupExampleInput" placeholder="">
           </div>
-          <div class="col-3 form-group pb-3">
+          <div class="col-lg-3 col-12 form-group pb-3">
             <label for="formGroupExampleInput2">Preço</label>
             <input  name="preco" type="number" step="any" class="form-control" id="formGroupExampleInput2" placeholder="">
           </div>

@@ -1,9 +1,8 @@
 <?php
-session_start();
+require('config/verificarlogin.php');
 require('config/conexao.php');
 
 $usuario_id = $_SESSION['usuario_id'];
-
 
 if (!isset($_GET['pedido'])) {
   $sql = "SELECT * FROM `pedidos` WHERE `usuario` = '$usuario_id'";
@@ -15,6 +14,9 @@ if (!isset($_GET['pedido'])) {
   $sql = "SELECT * FROM `pedidos` WHERE `pedido_id` = $pedido_id";
   $result_pedido = $conexao->query($sql) or die('EWRRRO');
   $dados_pedido = $result_pedido->fetch_assoc();
+  if ($dados_pedido['usuario'] != $usuario_id) {
+    header('Location: meuspedidos.php');
+  }
   $pagamento  = $dados_pedido['pagamento'];
   $valor_pedido = $dados_pedido['valor_pedido'];
 }
@@ -117,8 +119,13 @@ if (!isset($_GET['pedido'])) {
 
   <main class="mb-5 pb-5">
     <div class="container">
+      <h1><b>Meus Pedidos</b></h1>
+      <hr>
       <div class="row g-3">
         <?php if (!isset($_GET['pedido'])) {
+          if (mysqli_num_rows($result) == 0) { ?>
+              <h3 class="text-muted text-center mt-5">Você ainda não realizou nenhum pedido.</h3>
+          <?php }
           while ($dados = $result->fetch_assoc()) { ?>
             <div class="offset-lg-4 offset-sm-2 offset-md-3 offset-2">
               <div class="card text-center" style="width: 18rem;">
@@ -126,7 +133,7 @@ if (!isset($_GET['pedido'])) {
                   <div class="row g-1">
                     <div class="col-12 text-start">
                       <b>
-                        <high class="card-title">Pedido #<?php echo $dados['pedido_id'] ?></high>
+                        <high class="card-title">Pedido ID #<?php echo $dados['pedido_id'] ?></high>
                       </b>
                     </div>
                     <div class="col-12 text-start">
@@ -158,21 +165,23 @@ if (!isset($_GET['pedido'])) {
           <?php }
         } else { ?>
           <div class="col-10 offset-1">
-            <b>
-              <h1 class="text-dark text-center p-4 mb-3">Pedido #<?php echo $_GET['pedido'] ?></h1>
-            </b>
-            <div class="row g-5">
-              <div class="text-center col-xl-4 col-lg-4 col-4">
-                <legend>Produto</legend>
-              </div>
-              <div class="text-end col-xl-5 col-lg-5 text-lg-end col-4">
-                <legend>Quantidade</legend>
-              </div>
-              <div class="text-center col-xl-2 col-lg-2 col-2">
-                <legend style="padding-left: 35px;">Preço</legend>
-              </div>
-            </div>
             <ul class="list-group mb-3">
+              <div class="list-group-item bg-primary">
+                <b>
+                  <h1 class="text-white text-center p-4 mb-3">Pedido #<?php echo $_GET['pedido'] ?></h1>
+                </b>
+                <div class="row g-5">
+                  <div class="text-white text-center col-xl-4 col-lg-4 col-4">
+                    <legend>Produto</legend>
+                  </div>
+                  <div class="text-white text-end col-xl-5 col-lg-5 text-lg-end col-4">
+                    <legend>Quantidade</legend>
+                  </div>
+                  <div class="text-white text-center col-xl-2 col-lg-2 col-2">
+                    <legend style="padding-left: 35px;">Preço</legend>
+                  </div>
+                </div>
+              </div>
               <?php while ($dados_produto = $result->fetch_assoc()) {
                 $produto_id = $dados_produto['produto_id'];
                 $sql = "SELECT * FROM `produto` WHERE `produto_id` = '$produto_id'";
@@ -182,14 +191,11 @@ if (!isset($_GET['pedido'])) {
                   <div class="row g-3">
                     <div class="col-4 col-md-3 col-lg-2">
                       <a href="#">
-                        <img src="img/produtos/<?php echo $dados['produto_id'] ?>.jpg" class="img-thumbnail">
+                        <img src="img/produtos/<?php echo $dados['foto'] ?>" class="img-thumbnail">
                       </a>
                     </div>
                     <div class="col-5 col-md-5 col-lg-6 col-xl-6 text-left align-self-center">
                       <h4><b><a href="http://localhost/php/Projeto%20PHP/index.php?buscar=<?php echo $dados['nome'] ?>" class="text-decoration-none text-primary"><?php echo $dados['nome'] ?></a></b></h4>
-                      <h5 class="text-muted">
-                        <small><?php echo $dados['detalhe'] ?></small>
-                      </h5>
                     </div>
                     <div class="col-xl-1 col-lg-1 col-md-1 col-1 align-self-center">
                       <p><?php echo $dados_produto['quantidade'] ?></p>
@@ -198,13 +204,26 @@ if (!isset($_GET['pedido'])) {
                       <p>R$ <?php echo $dados['preco'] ?></p>
                     </div>
                   </div>
+                <?php }  ?>
                 </li>
-              <?php }  ?>
-              <div class="text-end pt-5">
-                <h4 class="text-dark mb-3">Valor Total: R$ <?php echo number_format($valor_pedido, 2, ',', '.') ?></h4>
-                <a href="meuspedidos.php" class="btn bg-primary text-white btn-lg">Voltar</a>
-              </div>
-            <?php } ?>
+                <li class="list-group-item bg-light">
+                  <legend class="text-primary"><b>Forma de pagamento</b></legend>
+                  <b><?php echo $dados_pedido['pagamento'] ?></b>
+                </li>
+                <li class="list-group-item bg-light">
+                  <div class="row g-1">
+                    <legend class="text-primary"><b>Endereço de entrega</b></legend>
+                    <div class="col-12"><b>Endereço</b>: <?php echo $dados_pedido['endereco'] ?></div>
+                    <div class="col-12"><b>Número</b>: <?php echo $dados_pedido['numero'] ?></div>
+                    <div class="col-12"><b>Complemento</b>: <?php echo $dados_pedido['complemento'] ?></div>
+                    <div class="col-12"><b>Referência</b>: <?php echo $dados_pedido['referencia'] ?></div>
+                  </div>
+                </li>
+                <div class="text-end pt-5">
+                  <h4 class="text-dark mb-3">Valor Total: R$ <?php echo number_format($valor_pedido, 2, ',', '.') ?></h4>
+                  <a href="meuspedidos.php" class="btn bg-primary text-white btn-lg">Voltar</a>
+                </div>
+              <?php } ?>
           </div>
       </div>
     </div>

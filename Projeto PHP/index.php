@@ -126,13 +126,13 @@ include_once('config/paginacao.php');
         </ol>
         <div class="carousel-inner">
           <div class="carousel-item active">
-            <img src="img/slide02.jpg" alt="teste" class="img-fluid w-100" />
+            <img src="img/banner01.jpg" alt="banner1" class="img-fluid w-100" />
           </div>
           <div class="carousel-item">
-            <img src="img/slide02.jpg" alt="teste" class="img-fluid w-100" />
+            <img src="img/banner02.jpg" alt="banner2" class="img-fluid w-100" />
           </div>
           <div class="carousel-item">
-            <img src="img/slide02.jpg" alt="teste" class="img-fluid w-100" />
+            <img src="img/banner03.jpg" alt="banner3" class="img-fluid w-100" />
           </div>
         </div>
         <a href="#carouselMain" role="button" data-bs-slide="prev" class="carousel-control-prev">
@@ -216,12 +216,12 @@ include_once('config/paginacao.php');
         <?php while ($dados = $result->fetch_assoc()) { ?>
           <div class="col-xl-2 col-lg-3 col-md-4 col-sm-6 d-flex align-items-stretch">
             <div class="card text-center bg-light">
-              <img src="img/produtos/<?php echo $dados['produto_id'] ?>.jpg" class="card-img-top" />
+              <img src="img/produtos/<?php echo $dados['foto'] ?>" class="card-img-top" />
               <div class="card-header">R$ <?php echo $dados['preco'] ?></div>
               <div class="card-body">
-                <h5 class="card-title"><?php echo $dados['nome'] ?></h5>
+                <h6 class="card-title"><b><?php echo $dados['nome'] ?></b></h6>
                 <p class="max-3l card-text description">
-                  <?php echo $dados['detalhe'] ?>
+                  <small><?php echo $dados['detalhe'] ?></small>
                 </p>
               </div>
               <div class="card-footer">

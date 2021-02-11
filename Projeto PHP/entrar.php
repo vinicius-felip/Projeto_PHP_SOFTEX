@@ -101,7 +101,6 @@ include_once('config/verificarlogout.php');
           </div>
           <button type="submit" class="btn btn-lg bg-primary text-white" type="button">Entrar</button>
           <p class="mb-3 mt-3">Ainda não é cadastrado? <a href="cadastrar.php">Clique aqui</a> para se cadastrar.</p>
-          <p class="mb-3">Esqueceu sua senha? <a href="recuperarsenha.php">Cliquei aqui</a> para recuperá-la.</p>
         </form>
       </div>
     </div>
