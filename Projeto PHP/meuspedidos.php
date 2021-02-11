@@ -5,7 +5,7 @@ require('config/conexao.php');
 $usuario_id = $_SESSION['usuario_id'];
 
 if (!isset($_GET['pedido'])) {
-  $sql = "SELECT * FROM `pedidos` WHERE `usuario` = '$usuario_id'";
+  $sql = "SELECT * FROM `pedidos` WHERE `usuario` = '$usuario_id'  ORDER BY `pedidos`.`pedido_id` DESC";
   $result = $conexao->query($sql) or die('EWRRRO');
 } else {
   $pedido_id = mysqli_real_escape_string($conexao, intval($_GET['pedido']));

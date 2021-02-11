@@ -117,6 +117,12 @@ include_once('config/paginacao.php');
   </nav>
 
   <header class="container">
+  <?php if (isset($_SESSION['compra_efetuada'])) { ?>
+        <div id=sucesso class="alert alert-success alert-dismissible fade show" role="alert">
+          <strong>Pedido efetuado!</strong> Acesse a página <b>Meus Pedidos</b> para saber o andamento.
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+      <?php } unset($_SESSION['compra_efetuada'])?>
     <div class="col-10 offset-1">
       <div id="carouselMain" class="carousel carousel-light slide" data-bs-ride="carousel">
         <ol class="carousel-indicators">

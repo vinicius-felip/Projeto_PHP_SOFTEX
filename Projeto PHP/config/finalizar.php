@@ -30,6 +30,7 @@ if (count($_SESSION['carrinho']) !=0){
         $conexao->query($sql) or die('ERRO');
     }
     $_SESSION['carrinho'] = array();
+    $_SESSION['compra_efetuada'] = true;
 }
 header("Location: ../index.php");
 exit;
