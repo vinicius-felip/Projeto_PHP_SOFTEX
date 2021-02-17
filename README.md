@@ -1,4 +1,4 @@
-<h1>Projeto PHP</h1>
+<h1 align="center">Projeto PHP</h1>
 <p>Projeto elaborado como atividade para o curso de Desenvolvimento de Software oferecido pela SOFTEX</p>
 <h2>Sobre</h2>
 <p>Projeto consiste em criar um site de vendas on-line utilizando a linguagem PHP8 e banco de dados MYSQL</p>
